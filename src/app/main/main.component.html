@@ -1,0 +1,21 @@
+<div class="container">
+    <div id="nav" class="w100">
+        <div>
+            <img src="../../assets/user_icon.png" alt="User Icon">
+            <ul>
+                <li><a href="">link 1</a></li>
+                <li><a href="">link 2</a></li>
+                <li><a href="">link 3</a></li>
+            </ul>
+        </div>
+    </div>
+    <div id="search">
+        <input autocapitalize="off" [(ngModel)]="searchValue" (keyup)="search()" autocomplete="off" placeholder="Egyetem, Kar, Szak..." type="text" name="seachValue" id="seachValue">
+        <img src="../../assets/search_simple.png" alt="(Q)">
+    </div>
+    <div id="result">
+        <div class="card" *ngFor="let item of items">
+            <p> {{ item.majorName }} </p>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,85 @@
+#nav{
+    background: gray;
+    height: 10%;
+}
+
+#nav div{
+    width: 94px;
+    height: 94px;
+    float: right;
+}
+
+#nav img{
+    width: 100%;
+}
+
+#nav div ul{
+    position: relative;
+    top: -10px;
+    display: none;
+    width: 100%;
+}
+
+#nav div:hover ul{
+    display: block;
+    background: lightskyblue;
+}
+
+#nav ul li{
+    list-style: none;
+    text-align: center;
+    border: 1px solid black;
+}
+
+#nav ul li a{
+    text-decoration: none;
+    padding: 0 28px;
+}
+
+#nav ul li a:hover{
+    background: rgb(92, 185, 216);
+    color: white;
+}
+
+#search{
+    position: relative;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50%;
+}
+
+#search input{
+    width: 80%!important;
+    display: inline-block;
+}
+
+#search img{
+    width: 40px;
+    height: 40px;
+    transform: translate(0, 40%);
+    display: inline-block;
+}
+
+#result{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly; 
+    align-items: flex-start;
+    align-content: flex-start;
+    gap: 25px 10px;
+    position: relative;
+    top: 30%;
+    background: lightcoral;  
+}
+
+.card{
+    height: 320px;
+    width: 220px;
+    border: solid black 2px;
+    text-align: center;
+    margin: 20px 10px;
+    word-wrap: break-word;
+    word-break: keep-all;
+}
