@@ -71,7 +71,6 @@
     gap: 25px 10px;
     position: relative;
     top: 30%;
-    background: lightcoral;  
 }
 
 .card{
@@ -82,4 +81,31 @@
     margin: 20px 10px;
     word-wrap: break-word;
     word-break: keep-all;
+}
+
+.major{
+    height: 316px;
+    width: 216px;
+    background-color: rgb(223, 203, 24);
+}
+.major span{
+    background-color: rgb(37, 192, 76);
+}
+
+.university{
+    height: 316px;
+    width: 216px;
+    background-color: rgb(26, 182, 221);
+}
+.university span{
+    background-color: rgb(37, 192, 76);
+}
+
+.faculty{
+    height: 316px;
+    width: 216px;
+    background-color: rgb(207, 75, 137);
+}
+.faculty span{
+    background-color: rgb(37, 192, 76);
 }

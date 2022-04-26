@@ -5,7 +5,7 @@
             <ul>
                 <li><a href="">link 1</a></li>
                 <li><a href="">link 2</a></li>
-                <li><a href="">link 3</a></li>
+                <li><a (click)="logout()" href="">Kilépés</a></li>
             </ul>
         </div>
     </div>
@@ -15,7 +15,23 @@
     </div>
     <div id="result">
         <div class="card" *ngFor="let item of items">
-            <p> {{ item.majorName }} </p>
+            <div *ngIf="item.hasOwnProperty('majorName'); else Faculty">
+                <div class="major">
+                    <span><a [routerLink]="[item.universityName, item.facultyName, item.majorName]">{{ item.universityName + ": " + item.majorName }}</a></span>
+                </div>
+            </div>
+            <ng-template  #University>
+                    <div class="university">
+                        <span>{{ item.universityName }}</span>
+                    </div>
+            </ng-template>
+            <ng-template #Faculty>
+                <div *ngIf="item.hasOwnProperty('facultyName'); else University">
+                    <div class="faculty">
+                        <span>{{ item.universityName + ": " + item.facultyName }}</span>
+                    </div>
+                </div>
+            </ng-template>
         </div>
     </div>
 </div>

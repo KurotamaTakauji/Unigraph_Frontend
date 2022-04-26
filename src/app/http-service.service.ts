@@ -45,7 +45,7 @@ export class HttpServiceService {
 
     return this.http.post<Register>(this.url+ url, data, httpOptions).pipe(
       tap(),
-      catchError(this.handleError)
+      // catchError(this.handleError)
     );
 
   }

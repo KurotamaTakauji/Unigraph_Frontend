@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpServiceService } from '../http-service.service';
 import { Search } from '../search';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-main',
@@ -15,25 +16,45 @@ export class MainComponent implements OnInit {
   items: any = {};
 
 
-  constructor(private httpService: HttpServiceService) { }
+  constructor(private httpService: HttpServiceService, private router:Router) { }
 
   search(){
-    // if (typeof searchValue === 'string') return searchValue;
+    (typeof this.searchValue === 'string') ?  null : this.searchValue = "";
     this.items = {};
+    let result = document.getElementById('result');
     if(this.searchValue != ""){
+      if(result){
+        result.style.display = "flex";
+      }
       let searchData: Search = {
         searchParam: this.searchValue
       }
-      this.httpService.search(searchData).subscribe({
+      this.httpService.search(searchData).subscribe(
+        {
            next: response => {
              this.items = response;
-           }
-         }
+             console.log(response);
+           },
+           error: error => {
+            console.log(error);
+          }
+        }
        );
+     }else{
+      if(result){
+        result.style.display = "none";
+      }
      }
   }
 
-  stringify(value: any){
+  logout(){
+    console.log("uwu");
+    localStorage.removeItem("token");
+    localStorage.removeItem("pw");
+    this.router.navigate(['']);
+  }
+
+  stringify(value: any): string{
     return JSON.stringify(value);
   }
 

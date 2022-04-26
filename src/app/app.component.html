@@ -59,8 +59,8 @@
           <input class="btn-blue" type="submit" (click)="login()" value="Bejelentkezés">
         </form>
         <hr>
-        <p>Még nincs fiókod? <a (click)="formTemplate = 'register'" href="#front">Hozz létre egyet</a> |</p>
-        <p><a (click)="formTemplate = 'forgot_password'" href="#front">Elfelejtettem a jelszamat</a></p>
+        <p>Még nincs fiókod? <a (click)="formTemplate = 'register'" href="javascript: void(0);">Hozz létre egyet</a> |</p>
+        <p><a (click)="formTemplate = 'forgot_password'" href="javascript: void(0);">Elfelejtettem a jelszamat</a></p>
       </div>
       <div id="register" *ngSwitchCase="'register'">
         <img (click)="showAuth = false; enableScroll()" src="../assets/btn_close.png" alt="(X)">
@@ -71,7 +71,7 @@
           <input class="btn-blue" type="submit" (click)="register()" value="Regisztráció">
         </form>
         <hr>
-        <p>Már van fiókod? <a (click)="formTemplate = 'login'" href="#front">Jelentkezz be</a></p>
+        <p>Már van fiókod? <a (click)="formTemplate = 'login'" href="javascript: void(0);">Jelentkezz be</a></p>
       </div>
       <div id="forgot_password" *ngSwitchCase="'forgot_password'">
         <img (click)="showAuth = false; enableScroll()" src="../assets/btn_close.png" alt="(X)">
@@ -80,7 +80,7 @@
           <input class="btn-blue" type="submit" value="Küldés">
         </form>
         <hr>
-        <p><a (click)="formTemplate = 'login'" href="#front">Vissza a bejelentkezéshez</a></p>
+        <p><a (click)="formTemplate = 'login'" href="javascript: void(0);">Vissza a bejelentkezéshez</a></p>
       </div>
       <div *ngSwitchDefault>
         uwu
