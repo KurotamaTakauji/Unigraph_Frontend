@@ -13,15 +13,16 @@ import { Router } from '@angular/router';
 export class MainComponent implements OnInit {
 
   searchValue: string = "";
-  items: any = {};
+  items: any = [];
+  pageEvent:any;
 
 
   constructor(private httpService: HttpServiceService, private router:Router) { }
 
   search(){
     (typeof this.searchValue === 'string') ?  null : this.searchValue = "";
-    this.items = {};
-    let result = document.getElementById('result');
+    this.items = [];
+    let result = document.getElementById('content');
     if(this.searchValue != ""){
       if(result){
         result.style.display = "flex";
@@ -33,7 +34,6 @@ export class MainComponent implements OnInit {
         {
            next: response => {
              this.items = response;
-             console.log(response);
            },
            error: error => {
             console.log(error);

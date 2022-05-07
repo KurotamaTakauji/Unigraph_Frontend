@@ -7,12 +7,6 @@ import { Token } from './token';
 import { Register } from './register';
 import { Search } from './search';
 
-const httpOptions = {
-  headers: new HttpHeaders({
-    'Content-Type':  'application/json'
-
-  })
-};
 
 @Injectable({
   providedIn: 'root'
@@ -24,8 +18,12 @@ export class HttpServiceService {
   constructor(private http: HttpClient) { }
 
   loginUser(data:Login, url: string): Observable<Token> {
-
-
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json'
+    
+      })
+    };
     return this.http.post<Token>(this.url+ url, data, httpOptions).pipe(
       tap(),
       catchError(this.handleError)
@@ -34,7 +32,13 @@ export class HttpServiceService {
   }
 
   search(value: Search): Observable<any> {
-    return this.http.patch<Search>(this.url+ "/universities", value, httpOptions).pipe(
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json'
+    
+      })
+    };
+    return this.http.patch<any>(this.url+ "/universities", value, httpOptions).pipe(
       tap(),
       catchError(this.handleError)
     );
@@ -42,7 +46,12 @@ export class HttpServiceService {
   }
   
   registerUser(data:Register, url: string): Observable<any> {
-
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json'
+    
+      })
+    };
     return this.http.post<Register>(this.url+ url, data, httpOptions).pipe(
       tap(),
       // catchError(this.handleError)

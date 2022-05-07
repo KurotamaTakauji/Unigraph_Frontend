@@ -185,26 +185,55 @@ div.container{
 }
 
 #upper p{
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -80%);
     margin: 3% 3%;
     color: white;
     text-align: justify;
+    z-index: 1;
 }
 
-#upper_background{
+#text2{
+    display: none;
+}
+
+#upper_background1{
     width: 100%;
     position: relative;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    animation: hover 3s steps(17) infinite;
+    animation: hover1 3s steps(13) infinite;
+}
+#upper_background2{
+    width: 100%;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: hover2 3s steps(13) infinite;
 }
 
-@keyframes hover {
-    10%{
+@keyframes hover1 {
+    0%{
         top: 50%;
     }
-    60%{
+    50%{
         top: 48%;
+    }
+    100%{
+        top: 50%;
+    }
+}
+
+@keyframes hover2 {
+    0%{
+        top: 50%;
+    }
+    50%{
+        top: 52%;
     }
     100%{
         top: 50%;
@@ -337,4 +366,673 @@ input[type=text]:focus, input[type=password]:focus{
     top: 0;
     left: 50%;
     transform: translate(-50%, 0);
+}
+
+@media only screen and (min-width: 320px) and (max-width: 359px){
+    #dyn-text li{
+        font-size: 45px;
+    }
+    #dyn-text{
+        width: 50%;
+    }
+    #logo{
+        height: 30vh;
+        width: 100vw;
+        position: relative;
+        transform: translate(10%, 0);
+        margin: 0 0 4% 0;
+    }
+    #visual{
+        display: none;
+    }
+    #temp-text{
+        width: 100vw;
+    }
+    #text1{
+        display: none;
+    }
+    #text2{
+        display: block;
+    }
+    #temp-div1{
+        display: none;
+    }
+    #temp-div2{
+        display: none;
+    }
+    #upper{
+        height: 70vh;
+        text-align: center;
+    }
+    #upper a{
+        display: none;
+    }
+    #upper p{
+        position: relative;
+        top: 35%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 0;
+        margin: 0 10% 0 0;
+    }
+    #upper button{
+        position: relative;
+        top: 10%
+    }
+    #lower{
+        display: none;
+    } 
+    #footer{
+        display: none;
+    }
+    #login{
+        width: 100%!important;
+        height: 60%!important;
+    }
+    #login form{
+        height: 80%!important;
+    }
+    .btn-blue{
+        margin-top: 5%;
+    }
+    #auth img{
+        width: 40px;
+        height: 40px;
+        position: relative;
+        top: 0px;
+        right: 0px;
+        float: right;
+    }
+    #register{
+        width: 100%!important;
+        height: 70%!important;
+    }
+    #register form{
+        height: 80%!important;
+    }
+    #forgot_password{
+        width: 100%!important;
+        height: 45%!important;
+    }
+    #forgot_password form{
+        height: 80%!important;
+    }
+}
+@media only screen and (min-width: 360px) and (max-width: 479px){
+    #dyn-text li{
+        font-size: 45px;
+    }
+    #dyn-text{
+        width: 50%;
+    }
+    #logo{
+        height: 30vh;
+        width: 100vw;
+        position: relative;
+        transform: translate(10%, 0);
+        margin: 0 0 4% 0;
+    }
+    #visual{
+        display: none;
+    }
+    #temp-text{
+        width: 100vw;
+    }
+    #text1{
+        display: none;
+    }
+    #text2{
+        display: block;
+    }
+    #temp-div1{
+        display: none;
+    }
+    #temp-div2{
+        display: none;
+    }
+    #upper{
+        height: 70vh;
+        text-align: center;
+    }
+    #upper a{
+        display: none;
+    }
+    #upper p{
+        position: relative;
+        top: 30%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 0;
+        margin: 0 10% 0 0;
+    }
+    #upper button{
+        position: relative;
+        top: 15%
+    }
+    #lower{
+        display: none;
+    } 
+    #footer{
+        display: none;
+    }
+    #login{
+        width: 100%!important;
+        height: 60%!important;
+    }
+    #login form{
+        height: 80%!important;
+    }
+    .btn-blue{
+        margin-top: 5%;
+    }
+    #auth img{
+        width: 40px;
+        height: 40px;
+        position: relative;
+        top: 0px;
+        right: 0px;
+        float: right;
+    }
+    #register{
+        width: 100%!important;
+        height: 70%!important;
+    }
+    #register form{
+        height: 80%!important;
+    }
+    #forgot_password{
+        width: 100%!important;
+        height: 45%!important;
+    }
+    #forgot_password form{
+        height: 80%!important;
+    }
+}
+@media only screen and (min-width: 480px) and (max-width: 959px){
+    #dyn-text li{
+        font-size: 45px;
+    }
+    #dyn-text{
+        width: 50%;
+    }
+    #logo{
+        height: 25vh;
+        width: 100vw;
+        margin: 2% 0 0 0;
+    }
+    #visual{
+        height: 15vh;
+        width: 100vw;
+    }
+    #temp-text{
+        width: 100vw;
+    }
+    #temp-div1{
+        display: none;
+    }
+    #temp-div2{
+        display: none;
+    }
+    #upper{
+        height: 60vh;
+        text-align: center;
+    }
+    #upper a{
+        display: none;
+    }
+    #upper p{
+        position: relative;
+        top: 38%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 0;
+        margin: 0 10% 0 0;
+    }
+    #upper button{
+        position: relative;
+        top: 5%
+    }
+    #lower{
+        display: none;
+    } 
+    #footer{
+        display: none;
+    }
+    #login{
+        width: 80%!important;
+        height: 40%!important;
+    }
+    #login form{
+        height: 80%!important;
+    }
+    .btn-blue{
+        margin-top: 5%;
+    }
+    #auth img{
+        width: 40px;
+        height: 40px;
+        position: relative;
+        top: 0px;
+        right: 0px;
+        float: right;
+    }
+    #register{
+        width: 80%!important;
+        height: 50%!important;
+    }
+    #register form{
+        height: 80%!important;
+    }
+    #forgot_password{
+        width: 80%!important;
+        height: 30%!important;
+    }
+    #forgot_password form{
+        height: 80%!important;
+    }
+}
+@media only screen and (min-width: 960px) and (max-width: 1023px){
+    #dyn-text li{
+        font-size: 42px;
+    }
+    #dyn-text{
+        width: 45%;
+    }
+    #logo{
+        height: 30vh;
+    }
+    #visual{
+        height: 30vh;
+    }
+    #temp-text{
+        width: 60vw;
+    }
+    #temp-div1{
+        display: none;
+    }
+    #temp-div2{
+        width: 40vw;
+    }
+    #upper{
+        height: 70vh;
+    }
+    #upper a{
+        display: none;
+    }
+    #upper p{
+        position: relative;
+        top: 37%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    #upper button{
+        position: relative;
+        top: -5%
+    }
+    #lower{
+        display: none;
+    }
+    #footer{
+        display: none;
+    }
+    .btn-blue{
+        margin-top: 5%;
+    }
+    #auth img{
+        width: 40px;
+        height: 40px;
+        position: relative;
+        top: 0px;
+        right: 0px;
+        float: right;
+    }
+    #login{
+        width: 45%!important;
+        height: 65%!important;
+    }
+    #login form{
+        height: 80%!important;
+    }
+    #register{
+        width: 45%!important;
+        height: 80%!important;
+    }
+    #register form{
+        height: 80%!important;
+    }
+    #forgot_password{
+        width: 45%!important;
+        height: 55%!important;
+    }
+    #forgot_password form{
+        height: 80%!important;
+    }
+}
+@media only screen and (min-width: 1024px) and (max-width: 1279px){
+    #dyn-text li{
+        font-size: 45px;
+    }
+    #dyn-text{
+        width: 45%;
+    }
+    #logo{
+        height: 30vh;
+    }
+    #visual{
+        height: 30vh;
+    }
+    #temp-text{
+        width: 50vw;
+    }
+    #temp-div1{
+        display: none;
+    }
+    #temp-div2{
+        width: 50vw;
+    }
+    #upper{
+        height: 70vh;
+    }
+    #upper a{
+        display: none;
+    }
+    #upper p{
+        position: relative;
+        top: 40%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    #upper button{
+        position: relative;
+        top: 3%
+    }
+    #lower{
+        display: none;
+    }
+    #footer{
+        display: none;
+    }
+    .btn-blue{
+        margin-top: 3%;
+    }
+    #auth img{
+        width: 40px;
+        height: 40px;
+        position: relative;
+        top: -10px;
+        right: -10px;
+        float: right;
+    }
+    #login{
+        width: 45%!important;
+        height: 55%!important;
+    }
+    #login form{
+        height: 80%!important;
+    }
+    #register{
+        width: 45%!important;
+        height: 70%!important;
+    }
+    #register form{
+        height: 80%!important;
+    }
+    #forgot_password{
+        width: 45%!important;
+        height: 45%!important;
+    }
+    #forgot_password form{
+        height: 80%!important;
+    }
+}
+@media only screen and (min-width: 1280px) and (max-width: 1365px){
+    #dyn-text li{
+        font-size: 50px;
+    }
+    #logo{
+        height: 30vh;
+    }
+    #visual{
+        height: 30vh;
+    }
+    #upper{
+        height: 70vh;
+    }
+    #upper button{
+        position: relative;
+        top: 0%
+    }
+    .btn-blue{
+        margin-top: 3%;
+    }
+    #auth img{
+        width: 40px;
+        height: 40px;
+        position: relative;
+        top: -10px;
+        right: -10px;
+        float: right;
+    }
+    #login{
+        width: 40%!important;
+        height: 50%!important;
+    }
+    #login form{
+        height: 80%!important;
+    }
+    #register{
+        width: 40%!important;
+        height: 60%!important;
+    }
+    #register form{
+        height: 80%!important;
+    }
+    #forgot_password{
+        width: 40%!important;
+        height: 40%!important;
+    }
+    #forgot_password form{
+        height: 80%!important;
+    }
+}
+@media only screen and (min-width: 1366px) and (max-width: 1535px){
+    #dyn-text li{
+        font-size: 50px;
+    }
+    #logo{
+        height: 30vh;
+    }
+    #visual{
+        height: 30vh;
+    }
+    #upper{
+        height: 70vh;
+    }
+    #upper button{
+        position: relative;
+        top: 9%
+    }
+    .btn-blue{
+        margin-top: 3%;
+    }
+    #auth img{
+        width: 40px;
+        height: 40px;
+        position: relative;
+        top: -20px;
+        right: -20px;
+        float: right;
+    }
+    #login{
+        width: 40%!important;
+        height: 50%!important;
+    }
+    #login form{
+        height: 80%!important;
+    }
+    #register{
+        width: 40%!important;
+        height: 60%!important;
+    }
+    #register form{
+        height: 80%!important;
+    }
+    #forgot_password{
+        width: 40%!important;
+        height: 40%!important;
+    }
+    #forgot_password form{
+        height: 80%!important;
+    }
+}
+@media only screen and (min-width: 1536px) and (max-width: 1679px){
+    #dyn-text li{
+        font-size:50px;
+    }
+    #dyn-text{
+        width: 35%;
+    }
+    #upper p{
+        position: relative;
+        top: 40%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    #upper button{
+        position: relative;
+        top: 12%;
+    }
+    .btn-blue{
+        margin-top: 3%;
+    }
+    #auth img{
+        width: 40px;
+        height: 40px;
+        position: relative;
+        top: -20px;
+        right: -20px;
+        float: right;
+    }
+    #login{
+        width: 35%!important;
+        height: 45%!important;
+    }
+    #login form{
+        height: 80%!important;
+    }
+    #register{
+        width: 35%!important;
+        height: 53%!important;
+    }
+    #register form{
+        height: 80%!important;
+    }
+    #forgot_password{
+        width: 35%!important;
+        height: 35%!important;
+    }
+    #forgot_password form{
+        height: 80%!important;
+    }
+}
+@media only screen and (min-width: 1680px) and (max-width: 1919px){
+    #dyn-text li{
+        font-size: 55px;
+    }
+    #upper p{
+        position: relative;
+        top: 40%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    #upper button{
+        position: relative;
+        top: 20%;
+    }
+    #dyn-text{
+        width: 35%;
+    }
+    .btn-blue{
+        margin-top: 3%;
+    }
+    #auth img{
+        width: 40px;
+        height: 40px;
+        position: relative;
+        top: -20px;
+        right: -20px;
+        float: right;
+    }
+    #login{
+        width: 30%!important;
+        height: 40%!important;
+    }
+    #login form{
+        height: 80%!important;
+    }
+    #register{
+        width: 30%!important;
+        height: 50%!important;
+    }
+    #register form{
+        height: 80%!important;
+    }
+    #forgot_password{
+        width: 30%!important;
+        height: 33%!important;
+    }
+    #forgot_password form{
+        height: 80%!important;
+    }
+}
+
+@media only screen and (min-width: 1920px){
+    #dyn-text li{
+        font-size: 60px;
+    }
+    #upper p{
+        position: relative;
+        top: 40%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    #upper button{
+        position: relative;
+        top: 30%;
+    }
+    #dyn-text{
+        width: 33%;
+    }
+    .btn-blue{
+        margin-top: 3%;
+    }
+    #auth img{
+        width: 40px;
+        height: 40px;
+        position: relative;
+        top: -20px;
+        right: -20px;
+        float: right;
+    }
+    #login{
+        width: 30%!important;
+        height: 36%!important;
+    }
+    #login form{
+        height: 80%!important;
+    }
+    #register{
+        width: 30%!important;
+        height: 44%!important;
+    }
+    #register form{
+        height: 80%!important;
+    }
+    #forgot_password{
+        width: 30%!important;
+        height: 30%!important;
+    }
+    #forgot_password form{
+        height: 80%!important;
+    }
 }
