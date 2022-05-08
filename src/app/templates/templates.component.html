@@ -1,4 +1,32 @@
-<p>templates works!</p>
-{{ uni }}
-{{ faculty }}
-{{ major }}
+<div class="container">
+    <mat-toolbar color="primary" class="app-header relativePos">
+        <span>UniGraph</span>
+        <span class="example-spacer"></span>
+        <span class="spacer"></span>
+        <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+          <mat-icon>share</mat-icon>
+        </button>
+    </mat-toolbar>
+    <div id="content">
+        <h1>Egyetem: {{uniN}}</h1><br>
+        <h2>Kar: {{facultyN}}</h2><br>
+        <h3>Szak: {{majorN}}</h3><br>
+        <table>
+          <tr>
+            <td colspan="2">
+              <button (click)="submit()" mat-button>Sablon létrehozás</button>
+            </td>
+          </tr>
+          </table>
+        <h3>Elérhető sablonok:</h3>
+        <div id="temps">
+          <mat-card class="card" *ngFor="let item of templates">
+              <img src="../../assets/university_icon.png" alt="A kép nem elérhető!">
+                  <mat-card-title>{{item.majorName}}</mat-card-title>
+                  <mat-card-actions>
+                      <a mat-button [routerLink]="item.universityName+'/'+item.universityID+'/'+item.facultyName+'/'+item.facultyID+'/'+item.majorName+'/'+item.majorID">Tovább</a>
+                  </mat-card-actions>
+          </mat-card>
+        </div>
+      </div>
+</div>

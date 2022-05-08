@@ -31,6 +31,100 @@ export class HttpServiceService {
 
   }
 
+  getTemplates(data:{
+    universityID: string,
+    facultyID: string,
+    majorID: string
+  }): Observable<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json'
+    
+      })
+    };
+    return this.http.post<any>(this.url+"/universities/faculty/major/template", data, httpOptions).pipe(
+      tap(),
+      catchError(this.handleError)
+    );
+
+  }
+
+  postTemplate(data:{
+    universityID: string,
+    facultyID: string,
+    majorID: string,
+    userId: string
+  }): Observable<any> {
+    const httpOptions: {
+      headers?: HttpHeaders,
+      observe?: 'body',
+      params?: any,
+      reportProgress?: boolean,
+      responseType: 'text',
+      withCredentials?: boolean
+    } = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json',
+        'Authorization': 'Bearer '+localStorage.getItem('token')
+      }),
+        responseType: 'text'
+    };
+    return this.http.post(this.url+"/templates", data, httpOptions).pipe(
+      tap(),
+      catchError(this.handleError)
+    );
+
+  }
+
+  getMajors(data:{
+    universityID: string,
+    facultyID: string
+  }): Observable<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json'
+    
+      })
+    };
+    return this.http.post<any>(this.url+"/universities/faculty/major", data, httpOptions).pipe(
+      tap(),
+      catchError(this.handleError)
+    );
+
+  }
+
+  getFaculties(data:{
+    universityID: string
+  }): Observable<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json'
+    
+      })
+    };
+    return this.http.post<any>(this.url+"/universities/faculty", data, httpOptions).pipe(
+      tap(),
+      catchError(this.handleError)
+    );
+
+  }
+
+  getUnis(data:{
+    universityName: string,
+  }): Observable<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json'
+    
+      })
+    };
+    return this.http.post<any>(this.url+"/universities", data, httpOptions).pipe(
+      tap(),
+      catchError(this.handleError)
+    );
+
+  }
+
   search(value: Search): Observable<any> {
     const httpOptions = {
       headers: new HttpHeaders({

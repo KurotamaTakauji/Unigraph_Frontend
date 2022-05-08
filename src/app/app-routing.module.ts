@@ -7,7 +7,7 @@ import { TemplatesComponent } from './templates/templates.component';
 
 const routes: Routes = [
   { path: '', component: MainComponent },
-  { path: ':uni/:faculty/:major', component: TemplatesComponent },
+  { path: ':uniN/:uniID/:facultyN/:facultyID/:majorN/:majorID', component: TemplatesComponent },
   { path: '**', pathMatch: 'full', component: NotFoundComponent},
 ];
 

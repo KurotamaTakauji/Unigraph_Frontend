@@ -159,10 +159,12 @@
     align-items: flex-start;
     align-content: flex-start;
     gap: 25px 10px;
-    position: relative;
-    top: 30%;
     overflow: auto;
     display: none;
+    background: #EDEDF4;
+    position: relative;
+    top: 30%;
+    padding: 0 10%;
 }
 
 #bottom{

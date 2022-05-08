@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router'
+import { HttpServiceService } from '../http-service.service';
 
 @Component({
   selector: 'app-templates',
@@ -8,17 +9,55 @@ import { ActivatedRoute, ParamMap } from '@angular/router'
 })
 export class TemplatesComponent implements OnInit {
 
-  uni?: string;
-  faculty?: string;
-  major?: string;
-  constructor(private route: ActivatedRoute) {}
+  uniN: string ="";
+  uniID: string ="";
+  facultyN: string ="";
+  facultyID: string ="";
+  majorN: string ="";
+  majorID: string ="";
+  msg:string = "";
+  templates:any = [];
+  temps:boolean = false;
+  constructor(private route: ActivatedRoute, private http: HttpServiceService) {}
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((params: ParamMap) => {
-        this.uni = params.get('uni')!;
-        this.faculty = params.get('faculty')!;
-        this.major = params.get('major')!;
+        this.uniN = params.get('uniN')!;
+        this.uniID = params.get('uniID')!;
+        this.facultyN = params.get('facultyN')!;
+        this.facultyID = params.get('facultyID')!;
+        this.majorN = params.get('majorN')!;
+        this.majorID = params.get('majorID')!;
     })
+    this.http.getTemplates({universityID: this.uniID, facultyID: this.facultyID, majorID: this.majorID}).subscribe(
+      {
+        next: res =>{
+          console.log(res);
+          if(res != []){
+            this.templates = res;
+            this.temps = true;
+          }
+          else{
+            this.temps = false;
+          }
+          
+        }
+      }
+    )
+  }
+  submit(){
+    this.http.postTemplate({
+      universityID: this.uniID,
+      facultyID: this.facultyID,
+      majorID: this.majorID,
+      userId: "string"
+    }).subscribe(
+      {
+        next: res => {
+          console.log(res);
+        }
+      }
+    )
   }
 
 }
