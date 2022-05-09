@@ -21,12 +21,26 @@ export class HttpServiceService {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type':  'application/json'
-    
+
       })
     };
     return this.http.post<Token>(this.url+ url, data, httpOptions).pipe(
       tap(),
       catchError(this.handleError)
+    );
+
+  }
+
+  registerUser(data:Register, url: string): Observable<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json'
+
+      })
+    };
+    return this.http.post<Register>(this.url+ url, data, httpOptions).pipe(
+      tap(),
+      // catchError(this.handleError)
     );
 
   }
@@ -39,7 +53,7 @@ export class HttpServiceService {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type':  'application/json'
-    
+
       })
     };
     return this.http.post<any>(this.url+"/universities/faculty/major/template", data, httpOptions).pipe(
@@ -48,8 +62,116 @@ export class HttpServiceService {
     );
 
   }
+  getTemplate(tempID: string): Observable<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json'
+
+      })
+    };
+    return this.http.get<any>(`${this.url}/templates/${tempID}`, httpOptions).pipe(
+      tap(),
+      catchError(this.handleError)
+    );
+
+  }
+
+  switchPublic(data: {
+    templateID: string,
+    userID: string
+  }): Observable<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json'
+
+      })
+    };
+    return this.http.patch<boolean>(`${this.url}/templates/ispublic`,data, httpOptions).pipe(
+      tap(),
+      catchError(this.handleError)
+    );
+
+  }
+  // /subjects
+
+  getSubjects(data:{
+    param: string,
+    universityID: string
+  }): Observable<any> {
+    const httpOptions: {
+      headers?: HttpHeaders,
+      observe?: 'body',
+      params?: any,
+      reportProgress?: boolean,
+      responseType: 'text',
+      withCredentials?: boolean
+    } = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json',
+        'Authorization': 'Bearer '+localStorage.getItem('token')
+      }),
+        responseType: 'text'
+    };
+    return this.http.patch(`${this.url}/subjects`, data, httpOptions).pipe(
+      tap(),
+      catchError(this.handleError)
+    );
+
+  }
+
+  postSubject(data: {
+    universityID: string,
+    neptunCode: string,
+    subjectName: string,
+    esubjectName: string,
+    kreditNum: number,
+    prerequisiteSubjectIDs: string[],
+    builtOnSubjectIDs: string[]
+  }){
+    const httpOptions: {
+      headers?: HttpHeaders,
+      observe?: 'body',
+      params?: any,
+      reportProgress?: boolean,
+      responseType: 'text',
+      withCredentials?: boolean
+    } = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json',
+        'Authorization': 'Bearer '+localStorage.getItem('token')
+      }),
+        responseType: 'text'
+    };
+    return this.http.post(`${this.url}/subjects`, '', httpOptions).pipe(
+      tap(),
+      catchError(this.handleError)
+    );
+  }
+
+  getNewSemester(templateID:string): Observable<any> {
+    const httpOptions: {
+      headers?: HttpHeaders,
+      observe?: 'body',
+      params?: any,
+      reportProgress?: boolean,
+      responseType: 'text',
+      withCredentials?: boolean
+    } = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json',
+        'Authorization': 'Bearer '+localStorage.getItem('token')
+      }),
+        responseType: 'text'
+    };
+    return this.http.patch(`${this.url}/templates/${templateID}`, '', httpOptions).pipe(
+      tap(),
+      catchError(this.handleError)
+    );
+
+  }
 
   postTemplate(data:{
+    templateName: string,
     universityID: string,
     facultyID: string,
     majorID: string,
@@ -83,7 +205,7 @@ export class HttpServiceService {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type':  'application/json'
-    
+
       })
     };
     return this.http.post<any>(this.url+"/universities/faculty/major", data, httpOptions).pipe(
@@ -99,7 +221,7 @@ export class HttpServiceService {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type':  'application/json'
-    
+
       })
     };
     return this.http.post<any>(this.url+"/universities/faculty", data, httpOptions).pipe(
@@ -115,7 +237,7 @@ export class HttpServiceService {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type':  'application/json'
-    
+
       })
     };
     return this.http.post<any>(this.url+"/universities", data, httpOptions).pipe(
@@ -126,29 +248,23 @@ export class HttpServiceService {
   }
 
   search(value: Search): Observable<any> {
-    const httpOptions = {
+    const httpOptions: {
+      headers?: HttpHeaders,
+      observe?: 'body',
+      params?: any,
+      reportProgress?: boolean,
+      responseType: 'text',
+      withCredentials?: boolean
+    } = {
       headers: new HttpHeaders({
-        'Content-Type':  'application/json'
-    
-      })
+        'Content-Type':  'application/json',
+        'Authorization': 'Bearer '+localStorage.getItem('token')
+      }),
+        responseType: 'text'
     };
-    return this.http.patch<any>(this.url+ "/universities", value, httpOptions).pipe(
+    return this.http.patch(this.url+ "/universities", value, httpOptions).pipe(
       tap(),
       catchError(this.handleError)
-    );
-
-  }
-  
-  registerUser(data:Register, url: string): Observable<any> {
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type':  'application/json'
-    
-      })
-    };
-    return this.http.post<Register>(this.url+ url, data, httpOptions).pipe(
-      tap(),
-      // catchError(this.handleError)
     );
 
   }

@@ -53,13 +53,15 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatTreeModule} from '@angular/material/tree';
 import {OverlayModule} from '@angular/cdk/overlay';
 import { ReactiveFormsModule } from '@angular/forms';
+import { EditTemplateComponent } from './edit-template/edit-template.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NotFoundComponent,
     MainComponent,
-    TemplatesComponent
+    TemplatesComponent,
+    EditTemplateComponent
   ],
   imports: [
     BrowserModule,

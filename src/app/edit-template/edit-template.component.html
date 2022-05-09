@@ -1,0 +1,74 @@
+<mat-drawer-container [hasBackdrop]="false">
+  <mat-drawer #drawer [mode]="'side'" [position]="'end'">
+    <form class="example-form v-centered">
+      <table class="example-full-width" cellspacing="0">
+        <tr>
+          <td>
+            <mat-form-field class="example-full-width" appearance="fill" required>
+              <mat-label>Megnevezés:</mat-label>
+              <input matInput [(ngModel)]="subject.subjectName" [ngModelOptions]="{standalone: true}" required>
+              </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field class="example-full-width" appearance="fill" required>
+              <mat-label>Angol név:</mat-label>
+              <input matInput [(ngModel)]="subject.esubjectName" [ngModelOptions]="{standalone: true}" required>
+              </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <mat-form-field class="example-full-width" appearance="fill" required>
+              <mat-label>Neptun kód:</mat-label>
+              <input matInput [(ngModel)]="subject.neptunCode" [ngModelOptions]="{standalone: true}" required>
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field class="example-full-width" appearance="fill" required>
+              <mat-label>Kreditek száma:</mat-label>
+              <input #code matInput type="number" [(ngModel)]="subject.kreditNum" [ngModelOptions]="{standalone: true}" required >
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <mat-form-field class="example-full-width" appearance="fill" required>
+              <mat-label>Előkövetelmények:</mat-label>
+              <input matInput #preReq (keyup)="search(preReq.value)" required>
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <button mat-stroked-button color="accent" class="btn-block" (click)="submitSubject()">Tárgy felvétele</button>
+          </td>
+        </tr>
+      </table>
+    </form>
+  </mat-drawer>
+  <mat-drawer-content>
+    {{templateID}}
+    {{templateName}}
+    <button mat-button (click)="newSemester()">Új szemeszter</button>
+    <table>
+      <tr>
+        <td *ngFor="let semester of template;let i = index">
+          <span>{{i+1}}.félév</span>
+          <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event, i)">
+            <div class="example-box" *ngFor="let subject of semester.subjects" cdkDrag>
+              <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
+              {{subject}}
+            </div>
+            <div class="example-box">
+              <button matSuffix mat-raised-button (click)="drawer.opened ? '' : drawer.toggle()">
+                Új tárgy<mat-icon>add</mat-icon>
+              </button>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </table>
+  </mat-drawer-content>
+</mat-drawer-container>
+
+

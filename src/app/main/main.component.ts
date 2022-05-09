@@ -33,11 +33,11 @@ export class MainComponent implements OnInit {
       this.httpService.search(searchData).subscribe(
         {
            next: response => {
-             this.items = response;
-           },
-           error: error => {
-            console.log(error);
-          }
+             if(response[0] == '['){
+              this.items = JSON.parse(response);
+             }else
+              console.log(response);
+           }
         }
        );
      }else{

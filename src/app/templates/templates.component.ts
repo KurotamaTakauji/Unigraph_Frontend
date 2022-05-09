@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router'
 import { HttpServiceService } from '../http-service.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-templates',
@@ -18,7 +19,16 @@ export class TemplatesComponent implements OnInit {
   msg:string = "";
   templates:any = [];
   temps:boolean = false;
-  constructor(private route: ActivatedRoute, private http: HttpServiceService) {}
+  showAuth: boolean = false;
+  isPublic:boolean = false;
+  template = {
+    templateName: "",
+    universityID: this.uniID,
+    facultyID: this.facultyID,
+    majorID: this.majorID,
+    userId: "unknown"
+  };
+  constructor(private route: ActivatedRoute, private http: HttpServiceService, private router:Router) {}
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((params: ParamMap) => {
@@ -40,24 +50,62 @@ export class TemplatesComponent implements OnInit {
           else{
             this.temps = false;
           }
-          
+
         }
       }
     )
   }
   submit(){
-    this.http.postTemplate({
+    this.template = {
+      templateName: this.template.templateName,
       universityID: this.uniID,
       facultyID: this.facultyID,
       majorID: this.majorID,
-      userId: "string"
-    }).subscribe(
+      userId: this.template.userId
+    };
+    this.http.postTemplate(this.template).subscribe(
       {
         next: res => {
           console.log(res);
+          this.http.getTemplate(res).subscribe(
+            {
+              next: res => {
+                console.log(res);
+                console.log(this.isPublic);
+                if(this.isPublic){
+                  this.http.switchPublic({
+                    templateID: res.templateID,
+                    userID: "unknown"
+                  }).subscribe(
+                    {
+                      next: resp => {
+                        console.log(resp);
+                        this.router.navigate(['/edit/'+res.templateID]);
+                      }
+                    }
+                  )
+                }
+                this.router.navigate(['/edit/'+res.templateID]);
+              }
+            }
+          )
         }
       }
     )
+  }
+  disableScroll() {
+    // Get the current page scroll position
+    let scrollTop: number = window.scrollY;
+    let scrollLeft: number = window.scrollX;
+
+        // if any scroll is attempted, set this to the previous value
+        window.onscroll = function() {
+            window.scrollTo(scrollLeft, scrollTop);
+        };
+  }
+
+  enableScroll() {
+      window.onscroll = function() {};
   }
 
 }

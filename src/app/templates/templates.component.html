@@ -14,7 +14,7 @@
         <table>
           <tr>
             <td colspan="2">
-              <button (click)="submit()" mat-button>Sablon létrehozás</button>
+              <button (click)="showAuth = true; disableScroll()" mat-button>Sablon létrehozás</button>
             </td>
           </tr>
           </table>
@@ -29,4 +29,16 @@
           </mat-card>
         </div>
       </div>
+</div>
+<div id="auth" *ngIf="showAuth">
+  <div id="login">
+    <img (click)="showAuth = false; enableScroll()" src="../assets/btn_close.png" alt="(X)">
+    <form action="javascript:void(0)">
+      <input autocapitalize="off" autocomplete="off" [(ngModel)]="template.templateName" placeholder="Név" type="text" name="userName" id="userName"><br>
+      <mat-slide-toggle [(ngModel)]="isPublic" [ngModelOptions]="{standalone: true}">Nyilvános</mat-slide-toggle>
+      <input mat-button class="btn-blue" type="submit" (click)="submit()" value="Létrehozás">
+      <hr>
+      <p>{{msg}}</p>
+    </form>
+  </div>
 </div>
