@@ -6,14 +6,14 @@
         <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
           <mat-icon>share</mat-icon>
         </button>
-    </mat-toolbar>      
+    </mat-toolbar>
     <div id="search">
         <input autocapitalize="off" [(ngModel)]="searchValue" (keyup)="search()" autocomplete="off" placeholder="Keresés: Egyetem, Kar, Szak..." type="text" name="seachValue" id="seachValue">
         <img src="../../assets/search_simple.png" alt="(Q)">
     </div>
     <div id="content">
         <mat-card class="card" *ngFor="let item of items">
-            <img src="../../assets/university_icon.png" alt="A kép nem elérhető!    ">
+            <img src="../../assets/university_icon.png" alt="A kép nem elérhető!">
             <div *ngIf="item.hasOwnProperty('majorName'); else Faculty">
                 <div class="major">
                     <mat-card-title>{{item.majorName}}</mat-card-title>

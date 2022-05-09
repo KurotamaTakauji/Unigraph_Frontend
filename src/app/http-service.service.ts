@@ -76,6 +76,38 @@ export class HttpServiceService {
 
   }
 
+
+  putTemplate(data:{
+    templateID: string,
+    templateName: string,
+    universityID: string,
+    facultyID: string,
+    majorID: string,
+    userID: string,
+    isPublic: boolean,
+    semester: semester[]
+  }): Observable<any> {
+    const httpOptions: {
+      headers?: HttpHeaders,
+      observe?: 'body',
+      params?: any,
+      reportProgress?: boolean,
+      responseType: 'text',
+      withCredentials?: boolean
+    } = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json',
+        'Authorization': 'Bearer '+localStorage.getItem('token')
+      }),
+        responseType: 'text'
+    };
+    return this.http.put(`${this.url}/templates`, data, httpOptions).pipe(
+      tap(),
+      catchError(this.handleError)
+    );
+
+  }
+
   switchPublic(data: {
     templateID: string,
     userID: string
@@ -142,7 +174,7 @@ export class HttpServiceService {
       }),
         responseType: 'text'
     };
-    return this.http.post(`${this.url}/subjects`, '', httpOptions).pipe(
+    return this.http.post(`${this.url}/subjects`, data, httpOptions).pipe(
       tap(),
       catchError(this.handleError)
     );
@@ -279,4 +311,9 @@ export class HttpServiceService {
     // console.error(errorMessage);
     return throwError(() => new Error(errorMessage));
   }
+}
+
+export interface semester{
+  semesterID: string,
+  subjects: string[]
 }
