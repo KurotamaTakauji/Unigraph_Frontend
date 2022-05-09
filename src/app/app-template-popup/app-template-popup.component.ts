@@ -72,7 +72,7 @@ export class AppTemplatePopupComponent implements OnInit {
 
   saveTemplate() {
     console.log(this.selectedUni,this.selectedFaculty,this.selectedMajor,this.form.controls['forTheLoveOfGodPleaseDontAutoFillTheTemplateName'].value,this.parseJwt(localStorage.getItem('token')).id)
-    this.httpClient.postTemplate(this.selectedUni,this.selectedFaculty,this.selectedMajor,this.form.controls['forTheLoveOfGodPleaseDontAutoFillTheTemplateName'].value,this.parseJwt(localStorage.getItem('token')).id).subscribe({
+    this.httpClient.postTemplatee(this.selectedUni,this.selectedFaculty,this.selectedMajor,this.form.controls['forTheLoveOfGodPleaseDontAutoFillTheTemplateName'].value,this.parseJwt(localStorage.getItem('token')).id).subscribe({
       next:value => {
         this.form.reset();
         this.dialogRef.close('saved');
