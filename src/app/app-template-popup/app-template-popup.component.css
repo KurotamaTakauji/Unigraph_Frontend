@@ -1,0 +1,12 @@
+.flex{
+  display: flex;
+  flex-direction: column;
+
+}
+.flex>mat-form-field{
+  width: 100%;
+}
+.save{
+  background: #0000004d;
+  width: 100%;
+}

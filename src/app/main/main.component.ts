@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { HttpServiceService } from '../http-service.service';
 import { Search } from '../search';
 import { Router } from '@angular/router';
+import {UserPageComponent} from "../user-page/user-page.component";
+import {MatDialog} from "@angular/material/dialog";
+import {EditorComponent} from "../editor/editor.component";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-main',
@@ -16,7 +20,10 @@ export class MainComponent implements OnInit {
   items: any = {};
 
 
-  constructor(private httpService: HttpServiceService, private router:Router) { }
+  constructor(private httpService: HttpServiceService, private router:Router, public dialog: MatDialog) {
+    this.openSettings()
+   // this.open('AAAA',"AAA","edit")
+  }
 
   search(){
     (typeof this.searchValue === 'string') ?  null : this.searchValue = "";
@@ -59,6 +66,26 @@ export class MainComponent implements OnInit {
   }
 
   ngOnInit(): void {
-  }
 
+  }
+ open(templateId:string,templateName:string,editing:string):Observable<any> {
+    const dialogRef = this.dialog.open(EditorComponent,{
+      width: '80vw',
+      height: '60vh',
+    });
+    dialogRef.componentInstance.templateID=templateId;
+    dialogRef.componentInstance.templateName=templateName;
+    dialogRef.componentInstance.templateName=editing;
+   return dialogRef.afterClosed();
+  }
+  openSettings() {
+    const dialogRef = this.dialog.open(UserPageComponent,{
+      width: '80vw',
+      height: '60vh',
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
 }

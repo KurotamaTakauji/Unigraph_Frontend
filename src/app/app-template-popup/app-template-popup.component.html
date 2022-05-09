@@ -1,0 +1,46 @@
+<div style="position:relative;height: 100%;width: 100%">
+  <form class="form"  *ngIf="form != undefined"  [formGroup]="form" novalidate (ngSubmit)="saveTemplate()">
+            <div class="flex1">
+              <div class="flex">
+
+                <mat-form-field class="example-full-width" appearance="fill">
+                  <mat-label>Egyetem</mat-label>
+                    <mat-select formControlName="uni" (selectionChange)="fillFaculty()" [(ngModel)]="selectedUni">
+                      <mat-option *ngFor="let u of university" [value]="u">
+                        {{u.universityName}}
+                      </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field class="example-full-width" appearance="fill">
+                  <mat-label>Kar</mat-label>
+                    <mat-select formControlName="faculty" (selectionChange)="fillMajor()" [(ngModel)]="selectedFaculty">
+                      <mat-option *ngFor="let f of faculty" [value]="f">
+                        {{f.facultyName}}
+                      </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                  <mat-form-field class="example-full-width" appearance="fill">
+                  <mat-label>Szak</mat-label>
+                    <mat-select formControlName="major" (selectionChange)="pls()" [(ngModel)]="selectedMajor">
+                      <mat-option *ngFor="let m of major" [value]="m">
+                        {{m.majorName}}
+                      </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field class="example-full-width" appearance="fill">
+                  <mat-label>Template neve</mat-label>
+                   <input type="text" [disabled]="nameDisabled" name="forTheLoveOfGodPleaseDontAutoFillTheTemplateName"  formControlName="forTheLoveOfGodPleaseDontAutoFillTheTemplateName" matInput placeholder="" value="" required>
+                </mat-form-field>
+
+
+              </div>
+              <div class="button-box">
+
+
+
+                <button type="submit" [disabled]="!form.valid" class="save" mat-button>Template felvétele</button>
+              </div>
+            </div>
+
+          </form>
+</div>

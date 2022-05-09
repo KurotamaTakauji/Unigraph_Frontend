@@ -1,0 +1,136 @@
+#nav{
+    background: gray;
+    height: 10%;
+}
+
+#nav div{
+    width: 94px;
+    height: 94px;
+    float: right;
+}
+
+#nav img{
+    width: 100%;
+}
+
+#nav div ul{
+    position: relative;
+    top: -10px;
+    display: none;
+    width: 100%;
+}
+
+#nav div:hover ul{
+    display: block;
+    background: lightskyblue;
+}
+
+#nav ul li{
+    list-style: none;
+    text-align: center;
+    border: 1px solid black;
+}
+
+#nav ul li a{
+    text-decoration: none;
+    padding: 0 28px;
+}
+
+#nav ul li a:hover{
+    background: rgb(92, 185, 216);
+    color: white;
+}
+
+#search{
+    position: relative;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50%;
+}
+
+#search input{
+    width: 80%!important;
+    display: inline-block;
+}
+
+#search img{
+    width: 40px;
+    height: 40px;
+    transform: translate(0, 40%);
+    display: inline-block;
+}
+
+::ng-deep html,::ng-deep body,.container{
+  height: 100%;
+}
+.content{
+  width: 78%;
+  position: relative;
+}
+.page-switch{
+  width: 20%;
+  margin-right: 20px;
+
+}
+.container{
+  display: flex;
+}
+.templateRow{
+  width: 80%;
+  min-height: 8%;
+
+  -webkit-box-shadow: 10px -1px 64px -16px rgba(0,0,0,0.75);
+-moz-box-shadow: 10px -1px 64px -16px rgba(0,0,0,0.75);
+box-shadow: 10px -1px 64px -16px rgba(0,0,0,0.75);
+  display: flex;
+
+}
+::ng-deep .user-page .mat-list-item-content{
+  justify-content: space-between !important;
+  flex-direction: row !important;
+}
+::ng-deep #uccso .mat-list-item-content{
+  justify-content: center !important;
+  flex-direction: row !important;
+}
+button{
+  width: 7vw;
+  margin: 5px;
+}
+.form{
+  height: 100%;
+}
+.form .del{
+  color: red;
+  background: rgba(66, 66, 66, 0.59);
+
+}
+.form .save{
+  color: white;
+  background:rgba(66, 66, 66, 0.59) ;
+}
+
+.form .del .mat-ripple-element {
+    background-color: rgba(255, 255, 255, 0.4);
+}
+.flex{
+
+
+    display: flex;
+    flex-direction: column;
+  margin-bottom: 10px;
+
+}
+.flex1{
+  display: flex;
+    height: 100%;
+    flex: 1 0 100%;
+    flex-direction: column;
+    justify-content: space-between;
+
+}
+.button-box{
+  text-align: right;
+}
+
