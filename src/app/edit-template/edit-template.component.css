@@ -1,0 +1,10 @@
+mat-drawer{
+  float: left;
+  max-width: 40%;
+  min-width: 30%;
+  background-color: rgb(239, 238, 234);
+  height: 100vh;
+}
+mat-drawer-container{
+  height: 100vh;
+}

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router'
+import { HttpServiceService } from '../http-service.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-templates',
@@ -8,17 +10,102 @@ import { ActivatedRoute, ParamMap } from '@angular/router'
 })
 export class TemplatesComponent implements OnInit {
 
-  uni?: string;
-  faculty?: string;
-  major?: string;
-  constructor(private route: ActivatedRoute) {}
+  uniN: string ="";
+  uniID: string ="";
+  facultyN: string ="";
+  facultyID: string ="";
+  majorN: string ="";
+  majorID: string ="";
+  msg:string = "";
+  templates:any = [];
+  temps:boolean = false;
+  showAuth: boolean = false;
+  isPublic:boolean = false;
+  template = {
+    templateName: "",
+    universityID: this.uniID,
+    facultyID: this.facultyID,
+    majorID: this.majorID,
+    userId: "unknown"
+  };
+  constructor(private route: ActivatedRoute, private http: HttpServiceService, private router:Router) {}
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((params: ParamMap) => {
-        this.uni = params.get('uni')!;
-        this.faculty = params.get('faculty')!;
-        this.major = params.get('major')!;
+        this.uniN = params.get('uniN')!;
+        this.uniID = params.get('uniID')!;
+        this.facultyN = params.get('facultyN')!;
+        this.facultyID = params.get('facultyID')!;
+        this.majorN = params.get('majorN')!;
+        this.majorID = params.get('majorID')!;
     })
+    this.http.getTemplates({universityID: this.uniID, facultyID: this.facultyID, majorID: this.majorID}).subscribe(
+      {
+        next: res =>{
+          console.log(res);
+          if(res != []){
+            this.templates = res;
+            this.temps = true;
+          }
+          else{
+            this.temps = false;
+          }
+
+        }
+      }
+    )
+  }
+  submit(){
+    this.template = {
+      templateName: this.template.templateName,
+      universityID: this.uniID,
+      facultyID: this.facultyID,
+      majorID: this.majorID,
+      userId: this.template.userId
+    };
+    this.http.postTemplate(this.template).subscribe(
+      {
+        next: res => {
+          console.log(res);
+          this.http.getTemplate(res).subscribe(
+            {
+              next: res => {
+                console.log(res);
+                console.log(this.isPublic);
+                if(this.isPublic){
+                  this.http.switchPublic({
+                    templateID: res.templateID,
+                    userID: "unknown"
+                  }).subscribe(
+                    {
+                      next: resp => {
+                        console.log(resp);
+                        this.router.navigate(['/edit/'+res.templateID]);
+                      }
+                    }
+                  )
+                }
+                this.router.navigate(['/edit/'+res.templateID]);
+              }
+            }
+          )
+        }
+      }
+    )
+  }
+  disableScroll() {
+    // Get the current page scroll position
+    let scrollTop: number = window.scrollY;
+    let scrollLeft: number = window.scrollX;
+
+        // if any scroll is attempted, set this to the previous value
+        window.onscroll = function() {
+            window.scrollTo(scrollLeft, scrollTop);
+        };
+  }
+
+  enableScroll() {
+      window.onscroll = function() {};
   }
 
 }

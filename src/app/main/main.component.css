@@ -41,6 +41,75 @@
     color: white;
 }
 
+.card{
+    height: 320px;
+    width: 220px;
+    border: solid black 2px;
+    border-radius: 5px;
+    text-align: center;
+    margin: 20px 10px;
+    word-wrap: break-word;
+    word-break: keep-all;
+    padding: 0!important;
+}
+
+.card img{
+    height: 50%;
+}
+
+.card button{
+    background-color: aqua;
+}
+
+.major{
+    width: 100%;
+    height: calc(50% - 5px);
+    background-color: rgb(223, 203, 24);
+    border-radius: 0 0 3px 3px;
+}
+.major mat-card-title{
+    padding: 10px 0;
+}
+
+.university{
+    width: 100%;
+    height: calc(50% - 5px);
+    background-color: rgb(26, 182, 221);
+    border-radius: 0 0 3px 3px;
+}
+.university mat-card-title{
+    padding: 10px 0;
+}
+.faculty{
+    width: 100%;
+    height: calc(50% - 5px);
+    background-color: rgb(216, 44, 139);
+    border-radius: 0 0 3px 3px;
+}
+.faculty mat-card-title{
+    padding: 10px 0;
+}
+
+.example-spacer {
+    flex: 1 1 auto;
+}
+
+  .app-header {
+    position: absolute;
+    display: flex!important;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
+    box-shadow: 0 3px 5px -1px rgba(0, 0, 0, .2), 0 6px 10px 0 rgba(0, 0, 0, .14), 0 1px 18px 0 rgba(0, 0, 0, .12);
+    padding: 5px!important;
+  }
+  .relativePos{
+    position: relative!important;
+  }
+
 #search{
     position: relative;
     top: 30%;
@@ -61,7 +130,28 @@
     display: inline-block;
 }
 
-#result{
+@media only screen and (max-width: 400px){
+    #search img{
+        display: none;
+    }
+
+    #search{
+        width: 80%;
+        left: 57%;
+    }
+}
+
+*{
+    scroll-behavior: smooth!important;
+    -ms-overflow-style: initial!important;  /* IE and Edge */
+    scrollbar-width: initial!important;  /* Firefox */
+}
+
+*::-webkit-scrollbar{
+    display: block!important;
+}
+
+#content{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -69,43 +159,17 @@
     align-items: flex-start;
     align-content: flex-start;
     gap: 25px 10px;
+    overflow: auto;
+    display: none;
+    background: #EDEDF4;
     position: relative;
     top: 30%;
+    padding: 0 10%;
 }
 
-.card{
-    height: 320px;
-    width: 220px;
-    border: solid black 2px;
-    text-align: center;
-    margin: 20px 10px;
-    word-wrap: break-word;
-    word-break: keep-all;
-}
-
-.major{
-    height: 316px;
-    width: 216px;
-    background-color: rgb(223, 203, 24);
-}
-.major span{
-    background-color: rgb(37, 192, 76);
-}
-
-.university{
-    height: 316px;
-    width: 216px;
-    background-color: rgb(26, 182, 221);
-}
-.university span{
-    background-color: rgb(37, 192, 76);
-}
-
-.faculty{
-    height: 316px;
-    width: 216px;
-    background-color: rgb(207, 75, 137);
-}
-.faculty span{
-    background-color: rgb(37, 192, 76);
+#bottom{
+    position: relative;
+    min-height: 20px;
+    background-color: aqua;
+    width: 100%;
 }

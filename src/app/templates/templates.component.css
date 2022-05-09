@@ -1,0 +1,164 @@
+.card{
+    height: 320px;
+    width: 220px;
+    border: solid black 2px;
+    border-radius: 5px;
+    text-align: center;
+    margin: 20px 10px;
+    word-wrap: break-word;
+    word-break: keep-all;
+    padding: 0!important;
+}
+
+.card img{
+    height: 50%;
+}
+
+.card button{
+    background-color: aqua;
+}
+
+.btn{
+  background-color: #58BC82;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  border-radius: 20px;
+  box-shadow: 2px 3px 3px #000;
+  z-index: 2;
+}
+
+.btn:hover{
+  background-color: #469b6a;
+  box-shadow: 1px 1px 3px #000;
+  cursor: pointer;
+}
+
+.btn-blue{
+  background-color: rgb(15, 193, 199);
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  border-radius: 20px;
+  box-shadow: 2px 3px 3px #000;
+  z-index: 2;
+  margin: 20px 10px;
+}
+
+.btn-blue:hover{
+  background: rgb(13, 175, 180);
+  box-shadow: 1px 1px 3px #000;
+  cursor: pointer;
+}
+
+#temps{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    align-content: flex-start;
+    gap: 25px 10px;
+    overflow: auto;
+    background: #EDEDF4;
+    padding: 0 10%;
+}
+#content table{
+    margin: 10% 0;
+    min-width: 20%;
+    background-color: rgb(55, 160, 125);
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+#content button{
+    background-color: aquamarine;
+    padding: 1% 5%;
+}
+#auth{
+  position: fixed;
+  top: calc(50% - 1px);
+  left: 50%;
+  width: 100vw;
+  height: 100vh;
+  transform: translate(-50%, -50%);
+  background: rgba(27, 27, 27, 0.678);
+  z-index: 5;
+  overflow: hidden;
+}
+
+#auth div{
+  width: 30%;
+  height: 40%;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgb(226, 234, 235);
+  border-radius: 20px;
+  box-shadow: 0 0 10px black;
+  padding: 2%;
+}
+
+#auth div form{
+  width: 100%;
+  height: 85%;
+  text-align: center;
+}
+
+#auth img{
+  width: 40px;
+  height: 40px;
+  position: relative;
+  top: -20px;
+  right: -20px;
+  float: right;
+}
+
+#auth img:hover{
+  background: rgba(230, 41, 16, 0.733);
+  border-radius: 50%;
+}
+
+input[type=text], input[type=password]{
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid rgb(143, 143, 143);
+  border-radius: 10px;
+}
+
+input[type=text]:focus, input[type=password]:focus{
+  background: rgb(187, 214, 223);
+}
+
+#auth hr{
+  position: relative;
+  top: 0;
+}
+
+#auth p{
+  float: left;
+  margin: 1% 1%;
+}
+
+#auth p a{
+  text-decoration: none;
+  color: rgb(15, 193, 199);
+}
+
+#auth p a:hover{
+  text-decoration: underline;
+  color: rgb(13, 163, 168);
+}

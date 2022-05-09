@@ -1,36 +1,94 @@
 <div class="container">
-    <div id="nav" class="w100">
-        <div>
-            <img src="../../assets/user_icon.png" alt="User Icon">
-            <ul>
-                <li><a (click)="openSettings()" >Beállitások</a></li>
-                <li><a (click)="logout()" href="">Kilépés</a></li>
-            </ul>
-        </div>
-    </div>
+    <mat-toolbar color="primary" class="app-header relativePos">
+        <span>UniGraph</span>
+        <span class="example-spacer"></span>
+        <span class="spacer"></span>
+        <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+          <mat-icon>share</mat-icon>
+        </button>
+    </mat-toolbar>      
     <div id="search">
-        <input autocapitalize="off" [(ngModel)]="searchValue" (keyup)="search()" autocomplete="off" placeholder="Egyetem, Kar, Szak..." type="text" name="seachValue" id="seachValue">
+        <input autocapitalize="off" [(ngModel)]="searchValue" (keyup)="search()" autocomplete="off" placeholder="Keresés: Egyetem, Kar, Szak..." type="text" name="seachValue" id="seachValue">
         <img src="../../assets/search_simple.png" alt="(Q)">
     </div>
-    <div id="result">
-        <div class="card" *ngFor="let item of items">
+    <div id="content">
+        <mat-card class="card" *ngFor="let item of items">
+            <img src="../../assets/university_icon.png" alt="A kép nem elérhető!    ">
             <div *ngIf="item.hasOwnProperty('majorName'); else Faculty">
                 <div class="major">
-                    <span><a [routerLink]="[item.universityName, item.facultyName, item.majorName]">{{ item.universityName + ": " + item.majorName }}</a></span>
+                    <mat-card-title>{{item.majorName}}</mat-card-title>
+                    <!--<mat-card-subtitle>{{item.universityName}}</mat-card-subtitle>
+                     <mat-card-content>
+                        <p>tartalom</p>
+                    </mat-card-content> -->
+                    <mat-card-actions>
+                        <a mat-button [routerLink]="item.universityName+'/'+item.universityID+'/'+item.facultyName+'/'+item.facultyID+'/'+item.majorName+'/'+item.majorID">Tovább</a>
+                    </mat-card-actions>
                 </div>
             </div>
-            <ng-template  #University>
-                    <div class="university">
-                        <span>{{ item.universityName }}</span>
-                    </div>
-            </ng-template>
             <ng-template #Faculty>
-                <div *ngIf="item.hasOwnProperty('facultyName'); else University">
-                    <div class="faculty">
-                        <span>{{ item.universityName + ": " + item.facultyName }}</span>
-                    </div>
+                <div class="faculty" *ngIf="item.hasOwnProperty('facultyName'); else University">
+                    <mat-card-title>{{item.facultyName}}</mat-card-title>
+                    <!-- <mat-card-subtitle>{{item.universityName}}</mat-card-subtitle> -->
+                    <mat-card-actions>
+                        <button mat-button>Tovább</button>
+                    </mat-card-actions>
                 </div>
             </ng-template>
-        </div>
+            <ng-template  #University>
+                <div class="university">
+                    <mat-card-title>{{item.universityName}}</mat-card-title>
+                    <mat-card-actions>
+                        <button mat-button>Tovább</button>
+                    </mat-card-actions>
+                </div>
+            </ng-template>
+        </mat-card>
+        <!-- <div id="bottom">
+            <mat-paginator #paginator
+            [length]="100"
+            [pageIndex]="0"
+            [pageSize]="10"
+            [pageSizeOptions]="[5, 10, 25, 100]"
+            >
+            (page)="pageEvent = getServerData($event)"
+            </mat-paginator>
+        </div> -->
     </div>
 </div>
+
+<!-- <div id="nav" class="w100">
+    <div>
+        <img src="../../assets/user_icon.png" alt="User Icon">
+        <ul>
+            <li><a href="">link 1</a></li>
+            <li><a href="">link 2</a></li>
+            <li><a (click)="logout()" href="">Kilépés</a></li>
+        </ul>
+    </div>
+</div>
+<div id="search">
+    <input autocapitalize="off" [(ngModel)]="searchValue" (keyup)="search()" autocomplete="off" placeholder="Egyetem, Kar, Szak..." type="text" name="seachValue" id="seachValue">
+    <img src="../../assets/search_simple.png" alt="(Q)">
+</div>
+<div id="result">
+    <div class="card" *ngFor="let item of items">
+        <div *ngIf="item.hasOwnProperty('majorName'); else Faculty">
+            <div class="major">
+                <span><a [routerLink]="[item.universityName, item.facultyName, item.majorName]">{{ item.universityName + ": " + item.majorName }}</a></span>
+            </div>
+        </div>
+        <ng-template  #University>
+                <div class="university">
+                    <span>{{ item.universityName }}</span>
+                </div>
+        </ng-template>
+        <ng-template #Faculty>
+            <div *ngIf="item.hasOwnProperty('facultyName'); else University">
+                <div class="faculty">
+                    <span>{{ item.universityName + ": " + item.facultyName }}</span>
+                </div>
+            </div>
+        </ng-template>
+    </div>
+</div> -->

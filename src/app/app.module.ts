@@ -7,12 +7,6 @@ import { FormsModule } from '@angular/forms';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { MainComponent } from './main/main.component';
 import { TemplatesComponent } from './templates/templates.component';
-import { UserPageComponent } from './user-page/user-page.component';
-import { CommonModule } from '@angular/common';
-import {ReactiveFormsModule} from "@angular/forms";
-import {MaterialCollectionModule} from "./material.module";
-import { EditorComponent } from './editor/editor.component';
-import { AppTemplatePopupComponent } from './app-template-popup/app-template-popup.component';
 
 
 @NgModule({
@@ -20,6 +14,7 @@ import { AppTemplatePopupComponent } from './app-template-popup/app-template-pop
     AppComponent,
     NotFoundComponent,
     MainComponent,
+    EditTemplateComponent
     TemplatesComponent,
     UserPageComponent,
     EditorComponent,
@@ -31,8 +26,54 @@ import { AppTemplatePopupComponent } from './app-template-popup/app-template-pop
     HttpClientModule,
     AppRoutingModule,
     FormsModule,
+    BrowserAnimationsModule,
+    A11yModule,
+    CdkAccordionModule,
+    ClipboardModule,
+    CdkStepperModule,
+    CdkTableModule,
+    CdkTreeModule,
+    DragDropModule,
+    MatAutocompleteModule,
+    MatBadgeModule,
+    MatBottomSheetModule,
+    MatButtonModule,
+    MatButtonToggleModule,
+    MatCardModule,
+    MatCheckboxModule,
+    MatChipsModule,
+    MatStepperModule,
+    MatDatepickerModule,
+    MatDialogModule,
+    MatDividerModule,
+    MatExpansionModule,
+    MatGridListModule,
+    MatIconModule,
+    MatInputModule,
+    MatListModule,
+    MatMenuModule,
+    MatNativeDateModule,
+    MatPaginatorModule,
+    MatProgressBarModule,
+    MatProgressSpinnerModule,
+    MatRadioModule,
+    MatRippleModule,
+    MatSelectModule,
+    MatSidenavModule,
+    MatSliderModule,
+    MatSlideToggleModule,
+    MatSnackBarModule,
+    MatSortModule,
+    MatTableModule,
+    MatTabsModule,
+    MatToolbarModule,
+    MatTooltipModule,
+    MatTreeModule,
+    OverlayModule,
+    PortalModule,
+    ScrollingModule,
+    ReactiveFormsModule
     CommonModule,
-    ReactiveFormsModule,
     MaterialCollectionModule
   ],
   providers: [],

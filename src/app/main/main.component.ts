@@ -17,7 +17,8 @@ import {Observable} from "rxjs";
 export class MainComponent implements OnInit {
 
   searchValue: string = "";
-  items: any = {};
+  items: any = [];
+  pageEvent:any;
 
 
   constructor(private httpService: HttpServiceService, private router:Router, public dialog: MatDialog) {
@@ -27,8 +28,8 @@ export class MainComponent implements OnInit {
 
   search(){
     (typeof this.searchValue === 'string') ?  null : this.searchValue = "";
-    this.items = {};
-    let result = document.getElementById('result');
+    this.items = [];
+    let result = document.getElementById('content');
     if(this.searchValue != ""){
       if(result){
         result.style.display = "flex";
@@ -39,12 +40,11 @@ export class MainComponent implements OnInit {
       this.httpService.search(searchData).subscribe(
         {
            next: response => {
-             this.items = response;
-             console.log(response);
-           },
-           error: error => {
-            console.log(error);
-          }
+             if(response[0] == '['){
+              this.items = JSON.parse(response);
+             }else
+              console.log(response);
+           }
         }
        );
      }else{
