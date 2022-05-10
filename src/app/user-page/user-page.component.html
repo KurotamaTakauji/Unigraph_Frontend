@@ -1,0 +1,106 @@
+<div class="container user-page">
+
+      <div class="page-switch">
+        <mat-selection-list #setting [multiple]="false">
+           <mat-list-option  [value]="'template2'">
+            Mentett tantervek kezelése
+          </mat-list-option>
+          <mat-list-option [selected]="true"  [value]="'template'">
+            Saját tantervek kezelése
+          </mat-list-option>
+          <mat-list-option   [value]="'user'">
+            Felhasználói adatok
+          </mat-list-option>
+        </mat-selection-list>
+      </div>
+
+
+
+      <div class="content">
+        <ng-container *ngIf="setting.selectedOptions.selected[0]?.value == 'template'">
+          <div class="TemplateList">
+          <mat-list   >
+               <mat-list-item style="justify-content: space-between" *ngFor="let t of ree;index as i " >
+
+                    <div>
+                          <div *ngIf="(t.hasOwnProperty('templateName'))" style="align-self: flex-start;height: 100%;text-align: center">{{(t.templateName )}}</div>
+                          <div *ngIf="(!t.hasOwnProperty('templateName'))" style="align-self: flex-start;height: 100%;text-align: center">Nincs név</div>
+                    </div>
+                 <div style="display: flex">
+                    <div style="align-self: flex-end;height: 100%;margin: auto;margin-right: 20px;"><mat-checkbox [disabled]="disableCheck[i]" (change)="swapPublic(t,i)" [(ngModel)]="ree[i].isPublic">Publikus</mat-checkbox></div>
+                   <button mat-button (click)="openTemplate(t.templateID)" ><mat-icon>visibility</mat-icon></button>
+                   <button mat-button (click)="editTemplate(t,i)" ><mat-icon>edit</mat-icon></button>
+                   <button mat-button (click)="deleteTemplate(t,i)"><mat-icon style="align-self: flex-end">delete</mat-icon></button>
+                   </div>
+
+              </mat-list-item>
+
+        </mat-list></div>
+        <mat-list>
+          <mat-list-item id="uccso">
+                <button mat-button (click)="addTemplate()"><mat-icon>add</mat-icon></button>
+            </mat-list-item>
+        </mat-list>
+
+        </ng-container>
+         <ng-container *ngIf="setting.selectedOptions.selected[0]?.value == 'template2'">
+          <div class="TemplateList">
+          <mat-list   >
+               <mat-list-item style="justify-content: space-between" *ngFor="let t of ree2;index as i " >
+
+                    <div>
+                          <div *ngIf="(t.hasOwnProperty('templateName'))" style="align-self: flex-start;height: 100%;text-align: center">{{(t.templateName )}}</div>
+                          <div *ngIf="(!t.hasOwnProperty('templateName'))" style="align-self: flex-start;height: 100%;text-align: center">Nincs név</div>
+                    </div>
+                 <div style="display: flex">
+ <button mat-button (click)="openTemplate(t)" ><mat-icon>visibility</mat-icon></button>
+                   <button mat-button (click)="deleteTemplateFromSaved(t,i)"><mat-icon style="align-self: flex-end">delete</mat-icon></button>
+                   </div>
+
+              </mat-list-item>
+
+        </mat-list></div>
+
+
+        </ng-container>
+        <ng-container *ngIf="setting.selectedOptions.selected[0]?.value == 'user'">
+          <form class="form"  *ngIf="passwordChange != undefined"  [formGroup]="passwordChange" novalidate (ngSubmit)="savePW()">
+            <div class="flex1">
+              <div class="flex">
+<!--                <div formGroupName="somethingAutofillDoesntKnowPasswordD">-->
+                <mat-form-field class="example-full-width" appearance="fill">
+                  <mat-label>Új jelszó</mat-label>
+                  <input type="password"   formControlName="somethingAutofillDoesntKnowPassword" matInput required >
+
+                </mat-form-field>
+                  <mat-error *ngIf="passwordChange.errors?.['']">
+                    	Please enter your newpassword
+		              </mat-error>
+
+                <mat-form-field class="example-full-width" appearance="fill">
+                  <mat-label>Új jelszó mégegyszer</mat-label>
+                  <input type="password"     formControlName="somethingAutofillDoesntKnow" matInput placeholder="" value="" autocomplete="off" required>
+
+                </mat-form-field>
+                  <mat-error *ngIf="passwordChange.errors?.['notSame']">
+                    A két jelszó nem egyezik meg
+                  </mat-error>
+<!--                </div>-->
+                <mat-form-field class="example-full-width" appearance="fill">
+                  <mat-label>Jelenlegi jelszó</mat-label>
+                  <input type="password"  formControlName="currentPassword" matInput placeholder="" value="" required>
+                </mat-form-field>
+
+              </div>
+              <div class="button-box">
+
+
+
+                <button type="submit" [disabled]="!passwordChange.valid" class="save"  mat-button>Jelszó frissitése</button>
+              </div>
+            </div>
+
+          </form>
+        </ng-container>
+      </div>
+</div>

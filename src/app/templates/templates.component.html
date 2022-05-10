@@ -12,8 +12,6 @@
         <h1>Egyetem: {{uniN}}</h1><br>
         <h2>Kar: {{facultyN}}</h2><br>
         <h3>Szak: {{majorN}}</h3><br>
-        <button (click)="showAuth = true; disableScroll()" mat-raised-button>Sablon létrehozás</button>
-        <h2 id="h2">Elérhető sablonok:</h2>
       </div>
       <div id="temps">
         <mat-card class="card" *ngFor="let temp of showTemplates;let i = index">
@@ -22,6 +20,8 @@
                 <mat-card-actions>
                   <a mat-button [routerLink]="'/view/'+temp.ID">Megtekintés</a>
                     <a mat-button [routerLink]="'/edit/'+temp.ID">Szerkesztés</a>
+                    <a mat-button *ngIf="!checkIfSaved(temp.ID)"><mat-icon>grade</mat-icon></a>
+                    <a mat-button *ngIf="checkIfSaved(temp.ID)"><mat-icon>star</mat-icon></a>
                 </mat-card-actions>
         </mat-card>
       </div>

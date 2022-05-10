@@ -1,0 +1,42 @@
+.subj{
+
+  border:1px solid rgba(0, 0, 0, 0.43);
+  margin: 5px;
+   -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+  font-size: 1rem;
+    border-radius: 11px;
+    text-align: center;
+
+}
+.subj ::ng-deep .mat-list-item-content{
+    justify-content: center;
+  }
+
+mat-list{
+  margin: 5px;
+}
+.pre{
+  background: orangered !important;
+}
+.post{
+  background: yellow !important;
+}
+.can{
+  background: #a8d3ff;
+}
+.has{
+   background: #3498db;
+
+}
+.done{
+  background: #2ecc71;
+}
+::ng-deep app-display-template mat-list {
+    width: 10%;
+}

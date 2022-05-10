@@ -3,7 +3,10 @@
         <span>UniGraph</span>
         <span class="example-spacer"></span>
         <span class="spacer"></span>
-        <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+      <button (click)="openTemplate()" mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+          <mat-icon>share</mat-icon>
+        </button>
+        <button (click)="openSettings()" mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
           <mat-icon>share</mat-icon>
         </button>
     </mat-toolbar>

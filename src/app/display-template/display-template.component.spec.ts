@@ -1,21 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { FormsModule } from '@angular/forms';
-import { MainComponent } from './main.component';
 
-describe('MainComponent', () => {
-  let component: MainComponent;
-  let fixture: ComponentFixture<MainComponent>;
+import { DisplayTemplateComponent } from './display-template.component';
+
+describe('DisplayTemplateComponent', () => {
+  let component: DisplayTemplateComponent;
+  let fixture: ComponentFixture<DisplayTemplateComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-       imports: [ FormsModule ],
-      declarations: [ MainComponent ]
+      declarations: [ DisplayTemplateComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(MainComponent);
+    fixture = TestBed.createComponent(DisplayTemplateComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
