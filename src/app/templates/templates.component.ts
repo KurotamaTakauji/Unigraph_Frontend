@@ -4,6 +4,9 @@ import { HttpServiceService } from '../http-service.service';
 import { Router } from '@angular/router';
 import {UserTemplateIDs} from "../UserTemplateIDs";
 import {Template} from "../Template";
+import { MatDialog } from '@angular/material/dialog';
+import { UserPageComponent } from '../user-page/user-page.component';
+import { DisplayTemplateComponent } from '../display-template/display-template.component';
 
 @Component({
   selector: 'app-templates',
@@ -43,7 +46,27 @@ export class TemplatesComponent implements OnInit {
     isPublic: false,
     semester: []
   };
-  constructor(private route: ActivatedRoute, private http: HttpServiceService, private router:Router) {}
+  constructor(private route: ActivatedRoute, private http: HttpServiceService, private router:Router,public dialog: MatDialog) {}
+
+  openSettings() {
+    const dialogRef = this.dialog.open(UserPageComponent,{
+      width: '80vw',
+      height: '60vh',
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
+
+  openTemplate(t:string){
+    let dialogRef = this.dialog.open(DisplayTemplateComponent,{
+      width:'98vw',
+      height:'90vh',
+      maxWidth:'100vw'
+    })
+    dialogRef.componentInstance.inputId=t;
+  }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((params: ParamMap) => {
@@ -158,10 +181,9 @@ export class TemplatesComponent implements OnInit {
     console.log(this)
   }
   checkIfSaved(tId:string){
-    if(this.userTemplates.savedPublicTemplates.find(e=>e==tId) ==undefined){
-      return false;
-    }else{
-      return true;
+    for(let temp of this.userTemplates.savedPublicTemplates){
+      if(temp == tId) return true;
     }
+    return false;
   }
 }

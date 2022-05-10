@@ -218,7 +218,7 @@ console.log(this.ree2)
 
       let dialogRef = this.dilaog.open(AppTemplatePopupComponent,{
         width:'24vw',
-        height:'44vh'
+        height:'45vh'
       })
      dialogRef.afterClosed().subscribe({
        next:value => {

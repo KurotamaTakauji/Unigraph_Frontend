@@ -3,6 +3,8 @@ import { ActivatedRoute, ParamMap } from '@angular/router'
 import { HttpServiceService } from '../http-service.service';
 import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
 import {FormBuilder, FormControl, FormGroup} from '@angular/forms';
+import {MatDialog} from "@angular/material/dialog";
+import { UserPageComponent } from '../user-page/user-page.component';
 
 @Component({
   selector: 'app-edit-template',
@@ -41,7 +43,18 @@ export class EditTemplateComponent implements OnInit {
   selected:number = 0;
   temp:string[][] = [];
 
-  constructor(private route: ActivatedRoute, private http: HttpServiceService) {
+  constructor(private route: ActivatedRoute, private http: HttpServiceService,public dialog: MatDialog) {
+  }
+
+  openSettings() {
+    const dialogRef = this.dialog.open(UserPageComponent,{
+      width: '80vw',
+      height: '60vh',
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
   }
 
   ngOnInit(): void {

@@ -118,10 +118,22 @@
   right: 0;
   z-index: 2;
   box-shadow: 0 3px 5px -1px rgba(0, 0, 0, .2), 0 6px 10px 0 rgba(0, 0, 0, .14), 0 1px 18px 0 rgba(0, 0, 0, .12);
-  padding: 5px!important;
+  padding: 5px 2.5%!important;
 }
 .relativePos{
   position: relative!important;
+}
+
+.app-header a{
+  text-decoration: none;
+  color: white;
+}
+
+mat-icon{
+  margin: 20% 0 0 0;
+  height:48px !important;
+  width:48px !important;
+  font-size:48px !important;
 }
 
 #search{

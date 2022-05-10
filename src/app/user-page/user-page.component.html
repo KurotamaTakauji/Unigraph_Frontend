@@ -26,10 +26,10 @@
                           <div *ngIf="(t.hasOwnProperty('templateName'))" style="align-self: flex-start;height: 100%;text-align: center">{{(t.templateName )}}</div>
                           <div *ngIf="(!t.hasOwnProperty('templateName'))" style="align-self: flex-start;height: 100%;text-align: center">Nincs név</div>
                     </div>
-                 <div style="display: flex">
+                 <div class="icons" style="display: flex">
                     <div style="align-self: flex-end;height: 100%;margin: auto;margin-right: 20px;"><mat-checkbox [disabled]="disableCheck[i]" (change)="swapPublic(t,i)" [(ngModel)]="ree[i].isPublic">Publikus</mat-checkbox></div>
                    <button mat-button (click)="openTemplate(t.templateID)" ><mat-icon>visibility</mat-icon></button>
-                   <button mat-button (click)="editTemplate(t,i)" ><mat-icon>edit</mat-icon></button>
+                   <a mat-button [mat-dialog-close] [routerLink]="'/edit/'+t.templateID"><mat-icon>edit</mat-icon></a>
                    <button mat-button (click)="deleteTemplate(t,i)"><mat-icon style="align-self: flex-end">delete</mat-icon></button>
                    </div>
 
@@ -45,16 +45,16 @@
         </ng-container>
          <ng-container *ngIf="setting.selectedOptions.selected[0]?.value == 'template2'">
           <div class="TemplateList">
-          <mat-list   >
+          <mat-list>
                <mat-list-item style="justify-content: space-between" *ngFor="let t of ree2;index as i " >
 
                     <div>
                           <div *ngIf="(t.hasOwnProperty('templateName'))" style="align-self: flex-start;height: 100%;text-align: center">{{(t.templateName )}}</div>
                           <div *ngIf="(!t.hasOwnProperty('templateName'))" style="align-self: flex-start;height: 100%;text-align: center">Nincs név</div>
                     </div>
-                 <div style="display: flex">
- <button mat-button (click)="openTemplate(t)" ><mat-icon>visibility</mat-icon></button>
-                   <button mat-button (click)="deleteTemplateFromSaved(t,i)"><mat-icon style="align-self: flex-end">delete</mat-icon></button>
+                 <div class="icons" style="display: flex">
+                    <button mat-button (click)="openTemplate(t.templateID)" ><mat-icon>visibility</mat-icon></button>
+                    <button mat-button (click)="deleteTemplateFromSaved(t,i)"><mat-icon style="align-self: flex-end">delete</mat-icon></button>
                    </div>
 
               </mat-list-item>
@@ -93,10 +93,7 @@
 
               </div>
               <div class="button-box">
-
-
-
-                <button type="submit" [disabled]="!passwordChange.valid" class="save"  mat-button>Jelszó frissitése</button>
+                <button type="submit" [disabled]="!passwordChange.valid" class="save"  mat-raised-button>Jelszó frissitése</button>
               </div>
             </div>
 

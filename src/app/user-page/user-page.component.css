@@ -94,7 +94,7 @@ box-shadow: 10px -1px 64px -16px rgba(0,0,0,0.75);
   justify-content: center !important;
   flex-direction: row !important;
 }
-button{
+.icons button{
   width: 36px;
   min-width: 36px !important;
   margin: 5px;
@@ -116,8 +116,6 @@ button{
     background-color: rgba(255, 255, 255, 0.4);
 }
 .flex{
-
-
     display: flex;
     flex-direction: column;
   margin-bottom: 10px;
@@ -132,6 +130,7 @@ button{
 
 }
 .button-box{
-  text-align: right;
+  flex: 1 0 100%;
+
 }
 

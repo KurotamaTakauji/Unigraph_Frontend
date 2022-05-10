@@ -1,10 +1,10 @@
 <div class="container">
     <mat-toolbar color="primary" class="app-header relativePos">
-        <span>UniGraph</span>
+      <a [routerLink]="'/'">UniGraph</a>
         <span class="example-spacer"></span>
         <span class="spacer"></span>
-        <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
-          <mat-icon>share</mat-icon>
+        <button (click)="openSettings()"  mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+          <mat-icon>account_circle</mat-icon>
         </button>
     </mat-toolbar>
     <div id="content">
@@ -12,16 +12,18 @@
         <h1>Egyetem: {{uniN}}</h1><br>
         <h2>Kar: {{facultyN}}</h2><br>
         <h3>Szak: {{majorN}}</h3><br>
+        <button mat-raised-button (click)="showAuth = true; disableScroll()">Sablon létrehozás</button>
+        <h2 id="h2">Elérhető sablonok</h2>
       </div>
       <div id="temps">
         <mat-card class="card" *ngFor="let temp of showTemplates;let i = index">
             <img src="../../assets/university_icon.png" alt="A kép nem elérhető!">
                 <mat-card-title>{{temp.Name + " " + temp.User}}</mat-card-title>
                 <mat-card-actions>
-                  <a mat-button [routerLink]="'/view/'+temp.ID">Megtekintés</a>
-                    <a mat-button [routerLink]="'/edit/'+temp.ID">Szerkesztés</a>
-                    <a mat-button *ngIf="!checkIfSaved(temp.ID)"><mat-icon>grade</mat-icon></a>
-                    <a mat-button *ngIf="checkIfSaved(temp.ID)"><mat-icon>star</mat-icon></a>
+                  <a mat-button [routerLink]="'/edit/'+temp.ID">Szerkesztés</a>
+                    <a mat-button (click)="openTemplate(temp.ID)">Megtekintés</a>
+                    <!-- <a mat-button *ngIf="!checkIfSaved(temp.ID)"><mat-icon>grade</mat-icon></a>
+                    <a mat-button *ngIf="checkIfSaved(temp.ID)"><mat-icon>star</mat-icon></a> -->
                 </mat-card-actions>
         </mat-card>
       </div>

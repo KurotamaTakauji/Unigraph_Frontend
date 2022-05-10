@@ -23,7 +23,7 @@ export class MainComponent implements OnInit {
 
 
   constructor(private httpService: HttpServiceService, private router:Router, public dialog: MatDialog) {
-    this.openTemplate();
+    // this.openTemplate();
   }
   openTemplate(){
     let dialogRef = this.dialog.open(DisplayTemplateComponent,{

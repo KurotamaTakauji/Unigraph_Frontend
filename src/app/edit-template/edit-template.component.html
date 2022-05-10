@@ -2,7 +2,7 @@
   <mat-drawer #drawer [mode]="'side'" [position]="'end'">
     <mat-tab-group mat-align-tabs="center">
       <mat-tab label="Meglévő kiválasztása">
-        <form class="example-form v-centered">
+        <form class="example-form">
           <img (click)="drawer.toggle()" src="../assets/btn_close.png" alt="(X)">
           <table class="example-full-width" cellspacing="0">
             <tr>
@@ -155,11 +155,11 @@
   </mat-drawer>
   <mat-drawer-content>
     <mat-toolbar color="primary" class="app-header relativePos">
-        <span>UniGraph</span>
+        <a [routerLink]="'/'">UniGraph</a>
         <span class="example-spacer"></span>
         <span class="spacer"></span>
-        <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
-          <mat-icon>share</mat-icon>
+        <button (click)="openSettings()"  mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+          <mat-icon>account_circle</mat-icon>
         </button>
       </mat-toolbar>
     <div class="content">
