@@ -16,33 +16,28 @@
     </div>
     <div id="content">
         <mat-card class="card" *ngFor="let item of items">
-            <img src="../../assets/university_icon.png" alt="A kép nem elérhető!">
-            <div *ngIf="item.hasOwnProperty('majorName'); else Faculty">
-                <div class="major">
+                <div class="major" *ngIf="item.hasOwnProperty('majorName'); else Faculty">
+                  <img src="../../assets/university_icon.png" alt="A kép nem elérhető!">
                     <mat-card-title>{{item.majorName}}</mat-card-title>
-                    <!--<mat-card-subtitle>{{item.universityName}}</mat-card-subtitle>
-                     <mat-card-content>
-                        <p>tartalom</p>
-                    </mat-card-content> -->
                     <mat-card-actions>
-                        <a mat-button [routerLink]="item.universityName+'/'+item.universityID+'/'+item.facultyName+'/'+item.facultyID+'/'+item.majorName+'/'+item.majorID">Tovább</a>
+                        <a mat-raised-button [routerLink]="item.universityName+'/'+item.universityID+'/'+item.facultyName+'/'+item.facultyID+'/'+item.majorName+'/'+item.majorID">Tovább</a>
                     </mat-card-actions>
                 </div>
-            </div>
             <ng-template #Faculty>
                 <div class="faculty" *ngIf="item.hasOwnProperty('facultyName'); else University">
+                  <img src="../../assets/university_icon.png" alt="A kép nem elérhető!">
                     <mat-card-title>{{item.facultyName}}</mat-card-title>
-                    <!-- <mat-card-subtitle>{{item.universityName}}</mat-card-subtitle> -->
                     <mat-card-actions>
-                        <button mat-button>Tovább</button>
+                        <button mat-raised-button (click)="uniDev()">Tovább</button>
                     </mat-card-actions>
                 </div>
             </ng-template>
             <ng-template  #University>
                 <div class="university">
+                  <img src="../../assets/university_icon.png" alt="A kép nem elérhető!">
                     <mat-card-title>{{item.universityName}}</mat-card-title>
                     <mat-card-actions>
-                        <button mat-button>Tovább</button>
+                        <button mat-raised-button (click)="uniDev()">Tovább</button>
                     </mat-card-actions>
                 </div>
             </ng-template>

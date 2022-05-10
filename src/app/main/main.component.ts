@@ -23,8 +23,6 @@ export class MainComponent implements OnInit {
 
 
   constructor(private httpService: HttpServiceService, private router:Router, public dialog: MatDialog) {
-    //this.openSettings()
-   // this.open('AAAA',"AAA","edit")
     this.openTemplate();
   }
   openTemplate(){
@@ -74,7 +72,10 @@ export class MainComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  }
 
+  uniDev(){
+    alert('Ez a funkció sajnos még fejlesztés alatt áll :c');
   }
  open(templateId:string,templateName:string,editing:string):Observable<any> {
     const dialogRef = this.dialog.open(EditorComponent,{

@@ -67,10 +67,11 @@
         <img (click)="showAuth = false; enableScroll()" src="../assets/btn_close.png" alt="(X)">
         <form action="javascript:void(0)">
           <input autocapitalize="off" autocomplete="off" [(ngModel)]="registerData.username" placeholder="Felhasználónév" type="text" name="userName" id="userName"><br>
-          <input autocapitalize="off" autocomplete="off" [(ngModel)]="registerData.email" placeholder="E-mail cím" type="text" name="email" id="email"><br>
+          <input autocapitalize="off" autocomplete="off" [(ngModel)]="registerData.email" placeholder="E-mail cím" type="text" name="email" (keyup)="validateEmail()" id="email"><br>
           <input [(ngModel)]="registerData.password" placeholder="Jelszó" type="password" name="password" id="password"><br>
           <input class="btn-blue" type="submit" (click)="register()" value="Regisztráció">
         </form>
+        <span>{{errorMsg}}</span>
         <hr>
         <p>Már van fiókod? <a (click)="formTemplate = 'login'" href="javascript: void(0);">Jelentkezz be</a></p>
       </div>

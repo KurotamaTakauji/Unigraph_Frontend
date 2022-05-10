@@ -30,6 +30,7 @@ export class TemplatesComponent implements OnInit {
     majorID: this.majorID,
     userId: "unknown"
   };
+  showTemplates:any = [];
   userTemplates:UserTemplateIDs={ownedTemplates:[],savedPublicTemplates:[]};
   userID:string = "";
   realTemlplates:Template= {
@@ -65,6 +66,21 @@ export class TemplatesComponent implements OnInit {
           console.log(res);
           if(res != []){
             this.templates = res;
+            for(let temp of this.templates){
+              this.http.getTemplate(temp).subscribe(
+                {
+                  next: res => {
+                    if(res.isPublic == true){
+                      this.showTemplates.push({
+                        ID: res.templateID,
+                        Name: res.templateName,
+                        User: res.userID
+                      })
+                    }
+                  }
+                }
+              )
+            }
             this.temps = true;
             console.log(this.templates)
 

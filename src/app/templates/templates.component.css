@@ -1,21 +1,46 @@
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.app-header {
+position: absolute;
+display: flex!important;
+justify-content: space-between;
+flex-wrap: wrap;
+top: 0;
+left: 0;
+right: 0;
+z-index: 2;
+box-shadow: 0 3px 5px -1px rgba(0, 0, 0, .2), 0 6px 10px 0 rgba(0, 0, 0, .14), 0 1px 18px 0 rgba(0, 0, 0, .12);
+padding: 5px!important;
+}
+.relativePos{
+position: relative!important;
+}
 .card{
-    height: 320px;
-    width: 220px;
-    border: solid black 2px;
-    border-radius: 5px;
-    text-align: center;
-    margin: 20px 10px;
-    word-wrap: break-word;
-    word-break: keep-all;
-    padding: 0!important;
+  height: 320px;
+  width: 220px;
+  text-align: center;
+  margin: 20px 10px;
+  word-wrap: break-word;
+  word-break: keep-all;
+  padding: 0!important;
 }
 
+.card{
+background-color: rgb(19, 226, 212);
+border: solid black 2px;
+border-radius: 5px;
+}
 .card img{
-    height: 50%;
+height: 40%;
 }
-
-.card button{
-    background-color: aqua;
+.card mat-card-title{
+padding: 10px 0;
+}
+.card a{
+position: relative;
+bottom: 0;
 }
 
 .btn{
@@ -68,8 +93,23 @@
     align-content: flex-start;
     gap: 25px 10px;
     overflow: auto;
-    background: #EDEDF4;
+    background: #ffee0063;
     padding: 0 10%;
+}
+#header{
+  padding: 2% 2%;
+  background-color: #ffee0063;
+}
+#header h2{
+  text-align: start;
+}
+#h2{
+  text-align: center!important;
+}
+#content button{
+  padding: 0.5% 1%;
+  transform: translate(-50%, 0);
+  margin: 1% 0 1% 40%;
 }
 #content table{
     margin: 10% 0;
@@ -80,10 +120,6 @@
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
-}
-#content button{
-    background-color: aquamarine;
-    padding: 1% 5%;
 }
 #auth{
   position: fixed;
