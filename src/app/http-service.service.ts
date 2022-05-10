@@ -130,10 +130,7 @@ export class HttpServiceService {
 
 
 
- getTemplates(data:{
-    universityID: string,
-    facultyID: string,
-    majorID: string
+
 
   putTemplate(data:{
     templateID: string,
@@ -166,9 +163,10 @@ export class HttpServiceService {
 
   }
 
-  switchPublic(data: {
-    templateID: string,
-    userID: string
+ getTemplates(data:{
+    universityID: string,
+    facultyID: string,
+    majorID: string
   }): Observable<any> {
     const httpOptions = {
       headers: new HttpHeaders({
