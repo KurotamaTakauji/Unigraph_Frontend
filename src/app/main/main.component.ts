@@ -61,4 +61,8 @@ export class MainComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  uniDev(){
+    alert('Ez a funkció sajnos még fejlesztés alatt áll :c');
+  }
+
 }

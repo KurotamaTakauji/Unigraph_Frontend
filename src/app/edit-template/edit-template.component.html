@@ -154,12 +154,22 @@
     </mat-tab-group>
   </mat-drawer>
   <mat-drawer-content>
-    {{templateID}}
-    {{templateName}}
-    <button mat-raised-button (click)="newSemester()">Új szemeszter</button>
-    <button mat-raised-button (click)="updateTemplate()">Sablon mentése</button>
-    <table>
-      <tr>
+    <mat-toolbar color="primary" class="app-header relativePos">
+        <span>UniGraph</span>
+        <span class="example-spacer"></span>
+        <span class="spacer"></span>
+        <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+          <mat-icon>share</mat-icon>
+        </button>
+      </mat-toolbar>
+    <div class="content">
+      <div class="toolbar">
+        <span>{{templateName}}</span>
+        <button mat-raised-button (click)="newSemester()">Új szemeszter</button>
+        <span class="example-spacer"></span>
+        <button mat-raised-button (click)="updateTemplate()">Sablon mentése</button>
+      </div>
+      <div class="flex">
         <td *ngFor="let semester of template;let i = index">
           <span>{{i+1}}.félév</span>
           <button matSuffix mat-button (click)="delSemester(i)">
@@ -180,8 +190,8 @@
             </div>
           </div>
         </td>
-      </tr>
-    </table>
+      </div>
+    </div>
   </mat-drawer-content>
 </mat-drawer-container>
 

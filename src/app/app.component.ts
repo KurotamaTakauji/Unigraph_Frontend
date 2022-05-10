@@ -27,7 +27,9 @@ export class AppComponent implements OnInit {
   key: string = "r5u8x/A?D*G-KaPdSgVkYp3s6v9y$B&E)H+MbQeThWmZq4t7w!z%C*F-JaNcRfUjXn2r5u8x/A?D(G+KbPeSgVkYp3s6v9y$B&E)H@McQfTjWmZq4t7w!z%C*F-JaNdR";
   errorMsg: string | undefined;
 
-  constructor(private httpService: HttpServiceService, private crypto:CryptoService, private router:Router) { 
+  emailReg:RegExp =  /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+
+  constructor(private httpService: HttpServiceService, private crypto:CryptoService, private router:Router) {
    }
 
    ngOnInit(): void {
@@ -56,6 +58,14 @@ export class AppComponent implements OnInit {
           }
         );
       }
+  }
+
+  validateEmail(){
+    if(!this.emailReg.test(this.registerData.email) ){
+      this.errorMsg = "érvénytelen email!";
+    }else{
+      this.errorMsg = "";
+    }
   }
 
   register(){
@@ -95,13 +105,13 @@ export class AppComponent implements OnInit {
     // Get the current page scroll position
     let scrollTop: number = window.scrollY;
     let scrollLeft: number = window.scrollX;
-  
+
         // if any scroll is attempted, set this to the previous value
         window.onscroll = function() {
             window.scrollTo(scrollLeft, scrollTop);
         };
   }
-  
+
   enableScroll() {
       window.onscroll = function() {};
   }
