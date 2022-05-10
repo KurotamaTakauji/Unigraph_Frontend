@@ -40,14 +40,14 @@ export class AppTemplatePopupComponent implements OnInit {
 
   }
   fillFaculty(){
-    this.httpClient.getFaculties(this.selectedUni).subscribe({
+    this.httpClient.getFacultiess(this.selectedUni).subscribe({
       next:value => {
         this.faculty=value;
       }
     })
   }
   fillMajor(){
-    this.httpClient.getMajors(this.selectedUni,this.selectedFaculty).subscribe({
+    this.httpClient.getMajorss(this.selectedUni,this.selectedFaculty).subscribe({
       next:value => {
         this.major=value;
 

@@ -2,6 +2,9 @@
 
       <div class="page-switch">
         <mat-selection-list #setting [multiple]="false">
+           <mat-list-option  [value]="'template2'">
+            Mentett tantervek kezelése
+          </mat-list-option>
           <mat-list-option [selected]="true"  [value]="'template'">
             Saját tantervek kezelése
           </mat-list-option>
@@ -37,6 +40,26 @@
                 <button mat-button (click)="addTemplate()"><mat-icon>add</mat-icon></button>
             </mat-list-item>
         </mat-list>
+
+        </ng-container>
+         <ng-container *ngIf="setting.selectedOptions.selected[0]?.value == 'template2'">
+          <div class="TemplateList">
+          <mat-list   >
+               <mat-list-item style="justify-content: space-between" *ngFor="let t of ree2;index as i " >
+
+                    <div>
+                          <div *ngIf="(t.hasOwnProperty('templateName'))" style="align-self: flex-start;height: 100%;text-align: center">{{(t.templateName )}}</div>
+                          <div *ngIf="(!t.hasOwnProperty('templateName'))" style="align-self: flex-start;height: 100%;text-align: center">Nincs név</div>
+                    </div>
+                 <div style="display: flex">
+
+                   <button mat-button (click)="deleteTemplateFromSaved(t,i)"><mat-icon style="align-self: flex-end">delete</mat-icon></button>
+                   </div>
+
+              </mat-list-item>
+
+        </mat-list></div>
+
 
         </ng-container>
         <ng-container *ngIf="setting.selectedOptions.selected[0]?.value == 'user'">

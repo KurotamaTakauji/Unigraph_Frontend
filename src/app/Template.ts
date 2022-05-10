@@ -1,3 +1,5 @@
+import {Semester} from "./Semester";
+
 export interface Template{
   templateID:string,
   templateName:string,
@@ -6,6 +8,6 @@ export interface Template{
   majorID:string,
   userID:string,
   isPublic:boolean,
-  semester:string[]
+  semester:Semester[]
 
 }

@@ -1,0 +1,13 @@
+<p>display-template works!</p>
+<div style="display: flex">
+  <ng-container>
+  <h4></h4>
+<mat-list *ngFor="let semesters of template.semester;index as i" [id]="semesters.semesterID">
+  <mat-list-item>{{i+1}}. félév</mat-list-item>
+  <ng-container *ngFor="let subject of semesters.subjects;index as j">
+
+  <mat-list-item [class.pre]="highlight[i][j][0]" [class.post]="highlight[i][j][1]" [class.can]="highlight[i][j][2]" [class.has]="highlight[i][j][3]" [class.done]="highlight[i][j][4]"  class="subj" (click)="click(subject)"  (mouseenter)="highligthRelatives(subject,i)" (mouseleave)="clearHighlight()" [textContent]="((findIt(subject) != undefined)  ?(findIt(subject).subjectName) :(' '))" ></mat-list-item>
+  </ng-container>
+
+</mat-list></ng-container>
+</div>

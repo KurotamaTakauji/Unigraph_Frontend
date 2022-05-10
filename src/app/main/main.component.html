@@ -3,10 +3,10 @@
         <span>UniGraph</span>
         <span class="example-spacer"></span>
         <span class="spacer"></span>
-        <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+        <button (click)="openSettings()" mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
           <mat-icon>share</mat-icon>
         </button>
-    </mat-toolbar>      
+    </mat-toolbar>
     <div id="search">
         <input autocapitalize="off" [(ngModel)]="searchValue" (keyup)="search()" autocomplete="off" placeholder="Keresés: Egyetem, Kar, Szak..." type="text" name="seachValue" id="seachValue">
         <img src="../../assets/search_simple.png" alt="(Q)">

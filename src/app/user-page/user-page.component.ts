@@ -38,7 +38,7 @@ export class UserPageComponent implements OnInit {
 
   userTemplates:UserTemplateIDs;
   ree:Template[];
-
+  ree2:Template[];
 
 
   constructor(private router:Router,private httpService:HttpServiceService,private formBuilder: FormBuilder,private _snackBar: MatSnackBar,private dilaog:MatDialog) {
@@ -53,6 +53,17 @@ export class UserPageComponent implements OnInit {
                     templateID:   ''
   }];
     this.ree.pop();
+    this.ree2=[{
+                    facultyID:    '',
+                    isPublic:     false,
+                    majorID:      '',
+                    semester:     [],
+                    templateName: '',
+                    universityID: '',
+                    userID:       '',
+                    templateID:   ''
+  }];
+    this.ree2.pop();
     this.userTemplates={ownedTemplates:[],savedPublicTemplates:[]};
 
 
@@ -144,7 +155,35 @@ export class UserPageComponent implements OnInit {
                     userID: response1.userID,
                     templateID:response1.templateID});
                   this.disableCheck.push(false)
+                  console.log(this.ree)
+                }
+              })
+            }
+          }
 
+      }
+    })
+
+    this.httpService.getUserTemplates(this.parseJwt(localStorage.getItem('token') || '').id).subscribe({
+      next: response => {
+        this.userTemplates=response;
+
+          if(this.userTemplates.savedPublicTemplates.length>0){
+            for(let t of this.userTemplates.savedPublicTemplates){
+
+              this.httpService.getTemplateById(t).subscribe({
+                next:response1=>{
+                  this.ree2.push({
+                    facultyID: response1.facultyID,
+                    isPublic: response1.isPublic,
+                    majorID: response1.majorID,
+                    semester: response1.semester,
+                    templateName: response1.templateName,
+                    universityID: response1.universityID,
+                    userID: response1.userID,
+                    templateID:response1.templateID});
+                  this.disableCheck.push(false)
+console.log(this.ree2)
                 }
               })
             }
@@ -227,6 +266,16 @@ export class UserPageComponent implements OnInit {
     return pass === confirmPass ? null : { notSame: true }
   }
 
+  deleteTemplateFromSaved(t:Template, i:number) {
+    this.httpService.deleteSavedTemplate(t.templateID,this.parseJwt(localStorage.getItem('token')).id).subscribe({
+        next:resp=>{
+          this.ree2.splice(i,1);
+        },
+        error:err=>{
+          this.snackbar('Hiba történt');
+        }
+      })
+  }
 }
 
 export interface TemplateListRow {
