@@ -277,14 +277,14 @@ console.log(this.ree2)
         }
       })
   }
-  openTemplate(t:Template){
+  openTemplate(t:string){
     console.log('AAA')
     let dialogRef = this.dilaog.open(DisplayTemplateComponent,{
       width:'98vw',
       height:'90vh',
       maxWidth:'100vw'
     })
-    dialogRef.componentInstance.inputId=t.templateID;
+    dialogRef.componentInstance.inputId=t;
   }
 }
 

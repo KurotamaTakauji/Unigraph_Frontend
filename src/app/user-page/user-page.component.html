@@ -28,7 +28,7 @@
                     </div>
                  <div style="display: flex">
                     <div style="align-self: flex-end;height: 100%;margin: auto;margin-right: 20px;"><mat-checkbox [disabled]="disableCheck[i]" (change)="swapPublic(t,i)" [(ngModel)]="ree[i].isPublic">Publikus</mat-checkbox></div>
-                   <button mat-button (click)="openTemplate(t)" ><mat-icon>visibility</mat-icon></button>
+                   <button mat-button (click)="openTemplate(t.templateID)" ><mat-icon>visibility</mat-icon></button>
                    <button mat-button (click)="editTemplate(t,i)" ><mat-icon>edit</mat-icon></button>
                    <button mat-button (click)="deleteTemplate(t,i)"><mat-icon style="align-self: flex-end">delete</mat-icon></button>
                    </div>
