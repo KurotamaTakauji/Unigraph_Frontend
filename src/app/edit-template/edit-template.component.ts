@@ -160,7 +160,6 @@ export class EditTemplateComponent implements OnInit {
           console.log(res);
           if(this.currentIndex > -1){
             this.template[this.currentIndex].subjects.push(res);
-            window.location.reload();
           }
         }
       }
@@ -171,7 +170,6 @@ export class EditTemplateComponent implements OnInit {
   submitASubject(index:number){
     this.template[this.currentIndex].subjects.push(this.availableSubjects[index]);
     this.temp[this.currentIndex].push(this.availableSubjects[index].subjectID);
-    window.location.reload();
   }
 
   search(val:string){

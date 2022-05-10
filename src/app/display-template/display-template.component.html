@@ -10,5 +10,6 @@
   <mat-list-item [class.pre]="highlight[i][j][0]" [class.post]="highlight[i][j][1]" [class.can]="highlight[i][j][2]" [class.has]="highlight[i][j][3]" [class.done]="highlight[i][j][4]"  class="subj" (click)="click(subject)"  (mouseenter)="highligthRelatives(subject,i)" (mouseleave)="clearHighlight()"  >{{((findIt(subject) != undefined)  ?(findIt(subject).subjectName) :(' '))}}</mat-list-item>
   </ng-container>
 
-</mat-list></ng-container>
+</mat-list>
+</ng-container>
 </div>
