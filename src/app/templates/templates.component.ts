@@ -28,6 +28,7 @@ export class TemplatesComponent implements OnInit {
     majorID: this.majorID,
     userId: "unknown"
   };
+  userID:string = "";
   constructor(private route: ActivatedRoute, private http: HttpServiceService, private router:Router) {}
 
   ngOnInit(): void {
@@ -39,6 +40,7 @@ export class TemplatesComponent implements OnInit {
         this.majorN = params.get('majorN')!;
         this.majorID = params.get('majorID')!;
     })
+    this.userID = this.parseJwt(<string>localStorage.getItem("token")).id;
     this.http.getTemplates({universityID: this.uniID, facultyID: this.facultyID, majorID: this.majorID}).subscribe(
       {
         next: res =>{
@@ -55,13 +57,21 @@ export class TemplatesComponent implements OnInit {
       }
     )
   }
+  parseJwt (token:string) {
+    var base64Url = token.split('.')[1];
+    var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+    var jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
+        return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+    }).join(''));
+    return JSON.parse(jsonPayload);
+  }
   submit(){
     this.template = {
       templateName: this.template.templateName,
       universityID: this.uniID,
       facultyID: this.facultyID,
       majorID: this.majorID,
-      userId: this.template.userId
+      userId: this.userID
     };
     this.http.postTemplate(this.template).subscribe(
       {
@@ -75,7 +85,7 @@ export class TemplatesComponent implements OnInit {
                 if(this.isPublic){
                   this.http.switchPublic({
                     templateID: res.templateID,
-                    userID: "unknown"
+                    userID: this.userID
                   }).subscribe(
                     {
                       next: resp => {

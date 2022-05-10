@@ -13,7 +13,7 @@
     </div>
     <div id="content">
         <mat-card class="card" *ngFor="let item of items">
-            <img src="../../assets/university_icon.png" alt="A kép nem elérhető!    ">
+            <img src="../../assets/university_icon.png" alt="A kép nem elérhető!">
             <div *ngIf="item.hasOwnProperty('majorName'); else Faculty">
                 <div class="major">
                     <mat-card-title>{{item.majorName}}</mat-card-title>
