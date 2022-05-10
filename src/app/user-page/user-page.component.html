@@ -53,7 +53,7 @@
                           <div *ngIf="(!t.hasOwnProperty('templateName'))" style="align-self: flex-start;height: 100%;text-align: center">Nincs név</div>
                     </div>
                  <div style="display: flex">
- <button mat-button (click)="openTemplate(t)" ><mat-icon>visibility</mat-icon></button>
+ <button mat-button (click)="openTemplate(t.templateID )" ><mat-icon>visibility</mat-icon></button>
                    <button mat-button (click)="deleteTemplateFromSaved(t,i)"><mat-icon style="align-self: flex-end">delete</mat-icon></button>
                    </div>
 

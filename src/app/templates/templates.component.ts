@@ -67,7 +67,7 @@ export class TemplatesComponent implements OnInit {
             this.templates = res;
             this.temps = true;
             console.log(this.templates)
-            
+
           }
           else{
             this.temps = false;
