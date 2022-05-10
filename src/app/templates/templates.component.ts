@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router'
 import { HttpServiceService } from '../http-service.service';
 import { Router } from '@angular/router';
+import {UserTemplateIDs} from "../UserTemplateIDs";
+import {Template} from "../Template";
 
 @Component({
   selector: 'app-templates',
@@ -28,7 +30,18 @@ export class TemplatesComponent implements OnInit {
     majorID: this.majorID,
     userId: "unknown"
   };
+  userTemplates:UserTemplateIDs={ownedTemplates:[],savedPublicTemplates:[]};
   userID:string = "";
+  realTemlplates:Template= {
+    templateID: '',
+    templateName: '',
+    universityID: '',
+    facultyID: '',
+    majorID: '',
+    userID: '',
+    isPublic: false,
+    semester: []
+  };
   constructor(private route: ActivatedRoute, private http: HttpServiceService, private router:Router) {}
 
   ngOnInit(): void {
@@ -41,6 +54,11 @@ export class TemplatesComponent implements OnInit {
         this.majorID = params.get('majorID')!;
     })
     this.userID = this.parseJwt(<string>localStorage.getItem("token")).id;
+    this.http.getUserTemplates(this.userID).subscribe({
+      next:value => {
+        this.userTemplates=value;
+      }
+    })
     this.http.getTemplates({universityID: this.uniID, facultyID: this.facultyID, majorID: this.majorID}).subscribe(
       {
         next: res =>{
@@ -48,6 +66,8 @@ export class TemplatesComponent implements OnInit {
           if(res != []){
             this.templates = res;
             this.temps = true;
+            console.log(this.templates)
+            this.http.g
           }
           else{
             this.temps = false;
@@ -118,4 +138,14 @@ export class TemplatesComponent implements OnInit {
       window.onscroll = function() {};
   }
 
+  pls() {
+    console.log(this)
+  }
+  checkIfSaved(tId:string){
+    if(this.userTemplates.savedPublicTemplates.find(e=>e==tId) ==undefined){
+      return false;
+    }else{
+      return true;
+    }
+  }
 }

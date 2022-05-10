@@ -17,6 +17,7 @@ import {
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {ErrorStateMatcher} from "@angular/material/core";
 import {AppTemplatePopupComponent} from "../app-template-popup/app-template-popup.component";
+import {DisplayTemplateComponent} from "../display-template/display-template.component";
 @Component({
   selector: 'app-user-page',
   templateUrl: './user-page.component.html',
@@ -275,6 +276,15 @@ console.log(this.ree2)
           this.snackbar('Hiba történt');
         }
       })
+  }
+  openTemplate(t:Template){
+    console.log('AAA')
+    let dialogRef = this.dilaog.open(DisplayTemplateComponent,{
+      width:'98vw',
+      height:'90vh',
+      maxWidth:'100vw'
+    })
+    dialogRef.componentInstance.inputId=t.templateID;
   }
 }
 

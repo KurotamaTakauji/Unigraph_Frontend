@@ -6,6 +6,7 @@ import {UserPageComponent} from "../user-page/user-page.component";
 import {MatDialog} from "@angular/material/dialog";
 import {EditorComponent} from "../editor/editor.component";
 import {Observable} from "rxjs";
+import {DisplayTemplateComponent} from "../display-template/display-template.component";
 
 @Component({
   selector: 'app-main',
@@ -22,10 +23,17 @@ export class MainComponent implements OnInit {
 
 
   constructor(private httpService: HttpServiceService, private router:Router, public dialog: MatDialog) {
-    this.openSettings()
+    //this.openSettings()
    // this.open('AAAA',"AAA","edit")
+    this.openTemplate();
   }
-
+  openTemplate(){
+    let dialogRef = this.dialog.open(DisplayTemplateComponent,{
+      width:'98vw',
+      height:'90vh',
+      maxWidth:'100vw'
+    })
+  }
   search(){
     (typeof this.searchValue === 'string') ?  null : this.searchValue = "";
     this.items = [];

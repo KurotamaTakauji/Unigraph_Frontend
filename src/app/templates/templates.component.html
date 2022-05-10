@@ -24,7 +24,10 @@
               <img src="../../assets/university_icon.png" alt="A kép nem elérhető!">
                   <mat-card-title>{{item.majorName}}</mat-card-title>
                   <mat-card-actions>
-                      <a mat-button [routerLink]="item.universityName+'/'+item.universityID+'/'+item.facultyName+'/'+item.facultyID+'/'+item.majorName+'/'+item.majorID">Tovább</a>
+<!--                      <a mat-button [routerLink]="item.universityName+'/'+item.universityID+'/'+item.facultyName+'/'+item.facultyID+'/'+item.majorName+'/'+item.majorID">Tovább</a>-->
+                    <a mat-button *ngIf="!checkIfSaved(item)"><mat-icon>grade</mat-icon></a>
+                    <a mat-button *ngIf="checkIfSaved(item)"><mat-icon>star</mat-icon></a>
+                    <a mat-button (click)="pls()">Tovab</a>
                   </mat-card-actions>
           </mat-card>
         </div>

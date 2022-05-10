@@ -95,7 +95,8 @@ box-shadow: 10px -1px 64px -16px rgba(0,0,0,0.75);
   flex-direction: row !important;
 }
 button{
-  width: 7vw;
+  width: 36px;
+  min-width: 36px !important;
   margin: 5px;
 }
 .form{

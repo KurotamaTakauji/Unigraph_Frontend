@@ -28,6 +28,7 @@ export class DisplayTemplateComponent implements OnInit {
     array:[]
   };
   highlight:boolean[][][]=[];
+  inputId:string='';
   constructor(private httpclient:HttpServiceService) {
     for(let i = 0;i<15;i++){
 
@@ -45,10 +46,24 @@ export class DisplayTemplateComponent implements OnInit {
         ]) ;
 
     }
-    this.httpclient.getTemplate('6279485428a40951455eebe7').subscribe({
+    //Ha templatetel van megnyitva akkor ki kell kommentezni
+    //Innentol
+
+
+  }
+
+
+  ngOnInit(): void {
+
+    //idaig
+
+  }
+  ngAfterViewInit():void{
+         let str=(this.inputId =='')?'9gz3970bx8j01b749lstdez':this.inputId;
+    this.httpclient.getTemplate(str).subscribe({
       next:value => {
         this.template=value;
-
+    //idaig + meg lejjebb
 
                 for(let semesters of this.template.semester){
 
@@ -87,18 +102,10 @@ export class DisplayTemplateComponent implements OnInit {
 
                 }
   })
-
+    //meg innentol
       }
     })
-
-
-
   }
-
-
-  ngOnInit(): void {
-  }
-
   highligthRelatives(fullSubject: string, i: number) {
 
     this.deepPre(this.findIt(fullSubject));

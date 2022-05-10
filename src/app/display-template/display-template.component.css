@@ -1,5 +1,5 @@
 .subj{
-  font-size: 2rem;
+
   border:1px solid rgba(0, 0, 0, 0.43);
   margin: 5px;
    -webkit-touch-callout: none; /* iOS Safari */
@@ -9,7 +9,15 @@
         -ms-user-select: none; /* Internet Explorer/Edge */
             user-select: none; /* Non-prefixed version, currently
                                   supported by Chrome, Edge, Opera and Firefox */
+  font-size: 1rem;
+    border-radius: 11px;
+    text-align: center;
+
 }
+.subj ::ng-deep .mat-list-item-content{
+    justify-content: center;
+  }
+
 mat-list{
   margin: 5px;
 }
@@ -28,4 +36,7 @@ mat-list{
 }
 .done{
   background: #2ecc71;
+}
+::ng-deep app-display-template mat-list {
+    width: 10%;
 }
