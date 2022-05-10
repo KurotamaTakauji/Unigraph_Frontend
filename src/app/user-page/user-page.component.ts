@@ -242,7 +242,7 @@ console.log(this.ree2)
 
     localStorage.removeItem("token");
     localStorage.removeItem("pw");
-    this.router.navigate(['']);
+    window.location.reload();
   }
   parseJwt(token: string | null) {
     if(token != null){

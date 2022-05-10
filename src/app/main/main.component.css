@@ -59,7 +59,7 @@
   border-radius: 5px;
 }
 .major img{
-  height: 40%;
+  height: 26%;
 }
 .major mat-card-title{
   padding: 10px 0;
@@ -77,7 +77,7 @@
     border-radius: 5px;
 }
 .university img{
-  height: 40%;
+  height: 30%;
 }
 .university mat-card-title{
     padding: 10px 0;
@@ -94,7 +94,7 @@
   border-radius: 5px;
 }
 .faculty img{
-  height: 40%;
+  height: 30%;
 }
 .faculty mat-card-title{
   padding: 10px 0;

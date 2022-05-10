@@ -11,6 +11,9 @@
           <mat-list-option   [value]="'user'">
             Felhasználói adatok
           </mat-list-option>
+          <mat-list-option [value]="'logout'">
+            <button mat-button (click)="logout()">Kijelentkezés</button>
+          </mat-list-option>
         </mat-selection-list>
       </div>
 
