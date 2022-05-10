@@ -5,6 +5,7 @@ import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
 import {FormBuilder, FormControl, FormGroup} from '@angular/forms';
 import {MatDialog} from "@angular/material/dialog";
 import { UserPageComponent } from '../user-page/user-page.component';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-edit-template',
@@ -42,8 +43,9 @@ export class EditTemplateComponent implements OnInit {
   currentIndex:number = -1;
   selected:number = 0;
   temp:string[][] = [];
+  downloadJsonHref:any = "";
 
-  constructor(private route: ActivatedRoute, private http: HttpServiceService,public dialog: MatDialog) {
+  constructor(private route: ActivatedRoute, private http: HttpServiceService,public dialog: MatDialog, private sanitizer:DomSanitizer) {
   }
 
   openSettings() {
@@ -170,6 +172,20 @@ export class EditTemplateComponent implements OnInit {
   submitASubject(index:number){
     this.template[this.currentIndex].subjects.push(this.availableSubjects[index]);
     this.temp[this.currentIndex].push(this.availableSubjects[index].subjectID);
+  }
+
+  downloadTemplate(){
+    let result:any = [];
+    for(let i=0; i<this.template.length; i++){
+      result.push({
+        semesterID: this.template[i].semesterID,
+        subjects: this.temp[i]
+      })
+    }
+    this.origTemplate.semester = result;
+    var theJSON = JSON.stringify(this.origTemplate);
+    var uri = this.sanitizer.bypassSecurityTrustUrl("data:text/json;charset=UTF-8," + encodeURIComponent(theJSON));
+    this.downloadJsonHref = uri;
   }
 
   search(val:string){

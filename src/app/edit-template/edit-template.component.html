@@ -165,6 +165,7 @@
         <button mat-raised-button (click)="newSemester()">Új szemeszter</button>
         <span class="example-spacer"></span>
         <button mat-raised-button (click)="updateTemplate()">Sablon mentése</button>
+        <a mat-raised-button [href]="downloadJsonHref" download="template.json" (click)="downloadTemplate()">Sablon letöltése</a>
       </div>
       <div class="flex">
         <td *ngFor="let semester of template;let i = index">
